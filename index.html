@@ -1,742 +1,971 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="icon" type="image/png" href="images/favicon.png">
    <title>เพิ่มผู้ติดตามทุกแพลตฟอร์ม | ปั้มยอดฟอล ปั้มยอดไลค์ ปั้มวิว ครบจบในที่เดียว | Gain-Like Service</title>
-   <meta name="descriptiont"บริการเพิ่มผู้ติดตาม TikTok, Facebook, IG, YouTube, Shopee , Line-OA  และอื่นๆ รวมถึงปั้มยอดไลค์ ปั้มวิว และเพิ่มคอมเมนต์ ด้วยระบบปลอดภัย เห็นผลจริง มีประกันยอดทุกแพ็กเกจ>
+   <meta name="descriptiont" บริการเพิ่มผู้ติดตาม TikTok, Facebook, IG, YouTube, Shopee , Line-OA และอื่นๆ
+      รวมถึงปั้มยอดไลค์ ปั้มวิว และเพิ่มคอมเมนต์ ด้วยระบบปลอดภัย เห็นผลจริง มีประกันยอดทุกแพ็กเกจ>
 
    <link rel="stylesheet" href="css/style.css">
-   <link rel="stylesheet" href="styles-slider.css"> 
+   <link rel="stylesheet" href="styles-slider.css">
 
    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
 
 
 
    <!-- Google Tag Manager -->
-   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-   })(window,document,'script','dataLayer','GTM-5HSWGWFH');</script>
+   <script>(function (w, d, s, l, i) {
+         w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+               new Date().getTime(), event: 'gtm.js'
+         }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+               'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-5HSWGWFH');</script>
    <!-- End Google Tag Manager -->
 
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1328920058890319');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1328920058890319&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+   <!-- Meta Pixel Code -->
+   <script>
+      !function (f, b, e, v, n, t, s) {
+         if (f.fbq) return; n = f.fbq = function () {
+            n.callMethod ?
+            n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+         };
+         if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+         n.queue = []; t = b.createElement(e); t.async = !0;
+         t.src = v; s = b.getElementsByTagName(e)[0];
+         s.parentNode.insertBefore(t, s)
+      }(window, document, 'script',
+         'https://connect.facebook.net/en_US/fbevents.js');
+
+      // Initialize Facebook Pixel
+      fbq('init', '1328920058890319');
+
+      // Enhanced configuration for better iOS tracking
+      fbq('set', 'agent', 'tmgoogletagmanager', '1328920058890319');
+
+      // Track PageView
+      fbq('track', 'PageView');
+
+      // Enhanced tracking for GitHub Pages
+      // Get user data for better iOS tracking
+      function getUserData() {
+         return {
+            fbc: new URLSearchParams(window.location.search).get('fbclid') ?
+               'fb.1.' + Date.now() + '.' + new URLSearchParams(window.location.search).get('fbclid') : null,
+            fbp: getCookie('_fbp'),
+            external_id: generateExternalId(),
+            client_ip_address: null, // Will be set by Facebook
+            client_user_agent: navigator.userAgent
+         };
+      }
+
+      // Get Facebook browser cookie
+      function getCookie(name) {
+         const value = `; ${document.cookie}`;
+         const parts = value.split(`; ${name}=`);
+         if (parts.length === 2) return parts.pop().split(';').shift();
+         return null;
+      }
+
+      // Generate external ID for better matching
+      function generateExternalId() {
+         let externalId = localStorage.getItem('gl_external_id');
+         if (!externalId) {
+            externalId = 'gl_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            localStorage.setItem('gl_external_id', externalId);
+         }
+         return externalId;
+      }
+
+      // Enhanced event tracking
+      function trackEnhancedEvent(eventName, customData = {}) {
+         const userData = getUserData();
+
+         // Standard pixel tracking
+         fbq('track', eventName, customData);
+
+         // Enhanced tracking with user data
+         fbq('track', eventName, customData, {
+            eventID: 'evt_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9)
+         });
+      }
+
+      // Track scroll depth for engagement
+      let maxScroll = 0;
+      window.addEventListener('scroll', function () {
+         const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+         if (scrollPercent > maxScroll) {
+            maxScroll = scrollPercent;
+            if (scrollPercent >= 25 && scrollPercent < 50) {
+               trackEnhancedEvent('ViewContent', { content_name: '25% Page Scroll' });
+            } else if (scrollPercent >= 50 && scrollPercent < 75) {
+               trackEnhancedEvent('ViewContent', { content_name: '50% Page Scroll' });
+            } else if (scrollPercent >= 75) {
+               trackEnhancedEvent('ViewContent', { content_name: '75% Page Scroll' });
+            }
+         }
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+         // Track page engagement time
+         let startTime = Date.now();
+         let engagementTracked = false;
+
+         setTimeout(() => {
+            if (!engagementTracked) {
+               trackEnhancedEvent('ViewContent', {
+                  content_name: '30 Second Engagement',
+                  content_category: 'Engagement',
+                  value: 1
+               });
+               engagementTracked = true;
+            }
+         }, 30000);
+
+         // Track Line button clicks with enhanced data
+         const lineButtons = document.querySelectorAll('a[href*="line.me"]');
+         lineButtons.forEach(button => {
+            button.addEventListener('click', function () {
+               const buttonText = this.textContent.trim();
+               trackEnhancedEvent('Lead', {
+                  content_name: 'Line Contact: ' + buttonText,
+                  content_category: 'Contact',
+                  source: 'website',
+                  value: 50 // Estimated lead value in THB
+               });
+
+               // Track in Google Analytics if available
+               if (typeof gtag !== 'undefined') {
+                  gtag('event', 'generate_lead', {
+                     currency: 'THB',
+                     value: 50,
+                     lead_source: 'line_button'
+                  });
+               }
+            });
+         });
+
+         // Track service button clicks with enhanced data
+         const serviceButtons = document.querySelectorAll('.btn, .btn-2');
+         serviceButtons.forEach(button => {
+            button.addEventListener('click', function (e) {
+               if (!this.href.includes('line.me')) { // Avoid double tracking Line buttons
+                  const buttonText = this.textContent.trim();
+                  const serviceValue = getServiceValue(buttonText);
+
+                  trackEnhancedEvent('InitiateCheckout', {
+                     content_name: buttonText,
+                     content_category: 'Service Interest',
+                     source: 'website',
+                     value: serviceValue,
+                     currency: 'THB'
+                  });
+               }
+            });
+         });
+
+         // Track promotion clicks
+         const promoLinks = document.querySelectorAll('.mySlides a');
+         promoLinks.forEach(link => {
+            link.addEventListener('click', function () {
+               trackEnhancedEvent('ViewContent', {
+                  content_name: 'Promotion Click',
+                  content_category: 'Promotion',
+                  source: 'slideshow'
+               });
+            });
+         });
+
+         // Track FAQ interactions
+         const faqButtons = document.querySelectorAll('.faq-header');
+         faqButtons.forEach(button => {
+            button.addEventListener('click', function () {
+               trackEnhancedEvent('ViewContent', {
+                  content_name: 'FAQ Interaction',
+                  content_category: 'Support',
+                  source: 'faq_section'
+               });
+            });
+         });
+      });
+
+      // Estimate service value based on button text
+      function getServiceValue(buttonText) {
+         if (buttonText.includes('TikTok') || buttonText.includes('ติ๊กต็อก')) return 100;
+         if (buttonText.includes('Facebook') || buttonText.includes('เฟส')) return 80;
+         if (buttonText.includes('Instagram') || buttonText.includes('ไอจี')) return 90;
+         if (buttonText.includes('YouTube') || buttonText.includes('ยูทูป')) return 150;
+         if (buttonText.includes('Shopee') || buttonText.includes('ช้อปปี้')) return 70;
+         if (buttonText.includes('Line-OA') || buttonText.includes('ไลน์')) return 120;
+         return 50; // Default value
+      }
+   </script>
+   <noscript><img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=1328920058890319&ev=PageView&noscript=1" /></noscript>
+   <!-- End Meta Pixel Code -->
 
 </head>
+
 <body>
 
    <!-- Google Tag Manager (noscript) -->
-   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5HSWGWFH"
-   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5HSWGWFH" height="0" width="0"
+         style="display:none;visibility:hidden"></iframe></noscript>
    <!-- End Google Tag Manager (noscript) -->
 
-<!-- header section starts  -->
+   <!-- header section starts  -->
 
-<header class="header">
+   <header class="header">
 
-   <section class="flex">
+      <section class="flex">
 
-      <a href="https://line.me/ti/p/@gainlike-service" class="logo"><img src="images/gain-like-service-final-09.png" width="15%" height="15%" alt="Logo">
+         <a href="https://line.me/ti/p/@gainlike-service" class="logo"><img src="images/gain-like-service-final-09.png"
+               width="15%" height="15%" alt="Logo">
 
-      <nav class="navbar">
+            <nav class="navbar">
 
-      </nav>
+            </nav>
 
-      <a href="https://line.me/ti/p/@gainlike-service" class="btn">ติดต่อ Line: @gainlike-service</a>
+            <a href="https://line.me/ti/p/@gainlike-service" class="btn">ติดต่อ Line: @gainlike-service</a>
 
-      <div id="menu-btn" class="fas fa-bars-staggered"></div>
+            <div id="menu-btn" class="fas fa-bars-staggered"></div>
 
-   </section>
+      </section>
 
-</header>
+   </header>
 
-<!-- header section ends -->
-
-
-<!-- home section starts  -->
-
-<div class="home" id="home">
-
-   <section class="flex">
-
-      <div class="content">
-         <h3>เพิ่มผู้ติดตามทุกแพลตฟอร์ม </br> <span>กับ Gain-Like Service</span></h3>
-         <p>เพิ่มยอดฟอล ยอดไลค์ ยอดวิว และคอมเมนต์ ได้ง่าย ปลอดภัย และเห็นผลจริง</p>
-         <p>เราคือผู้ให้บริการด้าน Social Boost ที่ช่วยให้ TikTok, Facebook, Instagram, YouTube, Shopee และ Line-OA ของคุณเติบโตอย่างมั่นคง</p>
-         <a href="https://line.me/ti/p/@gainlike-service" class="btn">ติดต่อ Line: @gainlike-service<i class="fas fa-arrow-right"></i></a>
-      </div>
-
-      <div class="image">
-         <img src="images/Home-Mascot.png" width="15%" height="15%" alt="Mascot-GainLike">
-      </div>
-
-   </section>
-
-</div>
-
-<!-- home section ends -->
+   <!-- header section ends -->
 
 
-<!-- Promotion section starts  -->
- 
-<div class="slideshow-container">
-   <div class="heading"><h3><span>Promotion</span> แนะนำ</h3></div>
+   <!-- home section starts  -->
 
-  <div class="mySlides fade">
-     <a href="https://line.me/ti/p/@gainlike-service" target="_blank">
-    <img src="/images/Promotion-โปร-11.11-Maga-Sale.png" style="width: 100%;">
-  </a>
-  </div>
+   <div class="home" id="home">
 
-  <div class="mySlides fade">
-   <a href="https://line.me/ti/p/@gainlike-service" target="_blank">
-    <img src="/images/Promotion3.png" style="width: 100%;">
-  </a>
-  </div>
+      <section class="flex">
 
-  <div class="mySlides fade">
-  <a href="https://line.me/ti/p/@gainlike-service" target="_blank">
-    <img src="/images/Promotion-100-บาทซื้ออะไรได้บ้าง.png" style="width: 100%;">
-  </a>
-  </div>
-
-    <div class="mySlides fade">
-      <a href="https://line.me/ti/p/@gainlike-service" target="_blank">
-    <img src="/images/Promotion-อยากปักสินค้าบน-TikTok--แต่ติดที่-‘ฟอลยังไม่ถึง-1,000’.png" style="width: 100%;">
-  </a>
-  </div>
-
-</div>
-<br>
-
-<!-- The dots/circles -->
-<div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span>
-  <span class="dot" onclick="currentSlide(2)"></span>
-  <span class="dot" onclick="currentSlide(3)"></span>
-  <span class="dot" onclick="currentSlide(4)"></span>
-</div>
-
-<script>
-let slideIndex = 0;
-showSlides();
-
-function showSlides() {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}    
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 3000); 
-}
-</script>
-
-<!-- Promotion section ends -->
-
-<!-- about section starts  -->
-
-<section class="about" id="about">
-
-<div class="heading"><h3>Gain-Like service<span> เหมาะสำหรับใคร ?</span></h3></div>
-   <div class="box-container">
-
-      <div class="box">
-         <div class="info">
-            <img src="images/info-1.svg" alt="">
-            <h3><span>ร้านค้าออนไลน์</span></h3>
-         </div>
-         <p>เพิ่มยอดขายและความน่าเชื่อถือให้ร้านของคุณ ดูมืออาชีพยิ่งขึ้นในทุกช่องทางออนไลน์</p>
-         <a href="https://line.me/ti/p/@gainlike-service" class="btn-2">สั่งซื้อบริการ <i class="fas fa-arrow-right"></i></a>
-      </div>
-
-      <div class="box">
-         <div class="info">
-            <img src="images/info-2.svg" alt="">
-            <h3><span>อินฟลูเอนเซอร์</span></h3>
-         </div>
-         <p>สร้างภาพลักษณ์ที่น่าเชื่อถือ ดึงดูดผู้ติดตาม และเพิ่มโอกาสในการร่วมงานกับแบรนด์</p>
-         <a href="https://line.me/ti/p/@gainlike-service" class="btn-2">สั่งซื้อบริการ <i class="fas fa-arrow-right"></i></a>
-      </div>
-
-      <div class="box">
-         <div class="info">
-            <img src="images/info-3.svg" alt="">
-            <h3><span>เจ้าของแบรนด์</span></h3>
-         </div>
-         <p>เสริมความน่าเชื่อถือให้แบรนด์ เติบโตอย่างมั่นคงด้วยภาพลักษณ์ที่โดดเด่นและดูมืออาชีพ</p>
-         <a href="https://line.me/ti/p/@gainlike-service" class="btn-2">สั่งซื้อบริการ <i class="fas fa-arrow-right"></i></a>
-      </div>
-
-      <div class="box">
-         <div class="info">
-            <img src="images/info-4.svg" alt="">
-            <h3><span>ต้องการความน่าเชื่อถือ</span></h3>
-
-         </div>
-         <p>เปลี่ยนความไว้วางใจให้กลายเป็นยอดขาย ด้วยระบบที่ช่วยยกระดับภาพลักษณ์ของคุณ</p>
-         <a href="https://line.me/ti/p/@gainlike-service" class="btn-2">สั่งซื้อบริการ <i class="fas fa-arrow-right"></i></a>
-      </div>
-
-
-</section>
-
-<!-- about section ends -->
-
-<!-- options section starts  -->
-
-<div class="options" id="options">
-
-   <section>
-
-      <div class="heading"><h3><span>บริการยอดนิยมของเรา</span></h3></div>
-
-      <div class="box-container">
-
-         <div class="box">
-            <a href="https://line.me/ti/p/@gainlike-service" target="_blank"><img src="images/card-7.png" alt=""></a>
-            <h3>เพิ่มผู้ติดตาม TikTok <br>ปั๊มยอดฟอล ติ๊กต็อก</h3>
-            <p>อยากมียอดฟอล TikTok เยอะขึ้น <br>เพื่อเปิดไลฟ์ ขายของ หรือปักตะกร้า ?</p>
-            <div class="info">
-               <p><span>Gain Like ช่วยคุณได้!</span></p>
-               <p><span>เพิ่มผู้ติดตาม tiktok คนไทยแท้</span></p>
-               <p><span>ปั้มยอดไลค์ ติ๊กต็อก ให้โพสต์ติดหน้า For You</span></p>
-               <p><span>ปั้มยอดวิว tiktok ช่วยให้วิดีโอพุ่งแรง</span></p>
-            </div>
-            <!-- <a href="#" class="btn">สั่งซื้อบริการ</a> -->
+         <div class="content">
+            <h3>เพิ่มผู้ติดตามทุกแพลตฟอร์ม </br> <span>กับ Gain-Like Service</span></h3>
+            <p>เพิ่มยอดฟอล ยอดไลค์ ยอดวิว และคอมเมนต์ ได้ง่าย ปลอดภัย และเห็นผลจริง</p>
+            <p>เราคือผู้ให้บริการด้าน Social Boost ที่ช่วยให้ TikTok, Facebook, Instagram, YouTube, Shopee และ Line-OA
+               ของคุณเติบโตอย่างมั่นคง</p>
+            <a href="https://line.me/ti/p/@gainlike-service" class="btn">ติดต่อ Line: @gainlike-service<i
+                  class="fas fa-arrow-right"></i></a>
          </div>
 
-         <div class="box">
-            <a href="https://line.me/ti/p/@gainlike-service" target="_blank"><img src="images/card-8.png" alt=""></a>
-            <h3>เพิ่มผู้ติดตาม Facebook <br>ปั้มยอดฟอล เฟส</h3>
-            <p>อยากให้เพจหรือโปรไฟล์ดูน่าเชื่อถือ <br>มีผู้ติดตามหลักพันหลักหมื่น ?</p>
-            <div class="info">
-               <p><span>เพิ่มผู้ติดตาม facebook คนไทยจริง</span></p>
-               <p><span>ปั้มยอดฟอล เฟส เพิ่มภาพลักษณ์ให้เพจธุรกิจ</span></p>
-               <p><span>ปั้มยอดไลค์ facebook / ปั้มยอดวิว facebook</span></p>
-               <p><span>เพิ่มคอมเม้นโพส facebook จากบัญชีจริง</span></p>
-            </div>
-            <!-- <a href="#" class="btn">สั่งซื้อบริการ</a> -->
+         <div class="image">
+            <img src="images/Home-Mascot.png" width="15%" height="15%" alt="Mascot-GainLike">
          </div>
 
-         <div class="box">
-<a href="https://line.me/ti/p/@gainlike-service" target="_blank"><img src="images/card-9.png" alt=""></a>
-            <h3>เพิ่มผู้ติดตาม IG <br>ปั๊มยอดฟอล ไอจี</h3>
-            <p>สร้างภาพลักษณ์ IG ให้โดดเด่น <br>และเพิ่ม Engagement ได้ง่าย ๆ</p>
-            <div class="info">
-               <p><span>ปั้มยอดฟอล ig คนไทยคุณภาพ</span></p>
-               <p><span>ปั้มยอดไลก์ ไอจี เพิ่มยอดโพสต์ให้ดูปัง</span></p>
-               <p><span>เพิ่มคอมเมนต์โพสต์ ig จากคนจริง</span></p>
-               <p><span>ปั้มยอดวิว Instagtam สำหรับ Reels และ Story</span></p>
-            </div>
-            <!-- <a href="#" class="btn">สั่งซื้อบริการ</a> -->
-         </div>
-
-                  <div class="box">
-<a href="https://line.me/ti/p/@gainlike-service" target="_blank"><img src="images/card-10.png" alt=""></a>
-            <h3>เพิ่มผู้ติดตาม YouTube <br>ปั๊มยอดวิว ยูทูป</h3>
-            <p>อยากปลดล็อกช่องสร้างรายได้ ? <br>เพิ่มยอดวิวและยอดซับได้จริง</p>
-            <div class="info">
-               <p><span>เพิ่มผู้ติดตาม youtube คนจริง</span></p>
-               <p><span>ปั้มยอดวิว youtube เพื่อดันคลิปติดแนะนำ</span></p>
-               <p><span>ปั้มยอดไลค์ ยูทูป เพิ่มความน่าเชื่อถือของช่อง</span></p>
-            </div>
-            <!-- <a href="#" class="btn">สั่งซื้อบริการ</a> -->
-         </div>
-
-         <div class="box">
-            <a href="https://line.me/ti/p/@gainlike-service" target="_blank"><img src="images/card-11.png" alt=""></a>
-            <h3>เพิ่มเพื่อน Line-OA <br>ปั้มยอดเพื่อน ไลน์</h3>
-            <p>ขยายฐานลูกค้าและเพิ่มยอดเพื่อนบน Line OA <br>ให้แบรนด์ของคุณเติบโตอย่างมืออาชีพ</p>
-            <div class="info">
-               <p><span>เพิ่มเพื่อน OA จริง คนไทย 100%</span></p>
-               <p><span>เพิ่มยอด Reach และ Broadcast ของ Line OA</span></p>
-               <p><span>เหมาะกับร้านค้า แบรนด์ และ อินฟลูเอนเซอร์</span></p>
-            </div>
-            <!-- <a href="#" class="btn">สั่งซื้อบริการ</a> -->
-         </div>
-
-         <div class="box">
-            <a href="https://line.me/ti/p/@gainlike-service" target="_blank"><img src="images/card-12.png" alt=""></a>
-            <h3>เพิ่มผู้ติดตาม Shopee<br>ปั๊มยอดวิว ช้อปปี้</h3>
-            <p>เพิ่มยอดฟอลร้าน Shopee <br>เพื่อให้ร้านค้าดูน่าเชื่อถือ และดันยอดขาย!</p>
-            <div class="info">
-               <p><span>เพิ่มผู้ติดตาม Shopee จริง</span></p>
-               <p><span>ปั๊มยอดวิวสินค้า Shopee เพิ่มการมองเห็น</span></p>
-               <p><span>เหมาะสำหรับร้านใหม่และร้านที่อยากติดหน้าแรก</span></p>
-            </div>
-            <!-- <a href="#" class="btn">สั่งซื้อบริการ</a> -->
-         </div>
-
-      </div>
-
-   </section>
-
-</div>
-
-<!-- options section ends -->
-
-<div class="options2" id="options2">
-
-   <section>
-
-      <div class="heading2"><h3>แพ็กเกจยอดนิยม</h3></div>
-
-      <div class="box-container">
-
-         <div class="box">
-            <img src="images/card-1.png" alt="">
-            <h3>เพิ่มผู้ติดตาม TikTok</h3>
-            <p>ฟอลจริง คนไทยแท้</p>
-            <div class="info">
-               <h1><span>ราคาเริ่มต้น 10 บาท</span></h1>
-            </div>
-            <a href="https://line.me/ti/p/@gainlike-service" class="btn">สั่งซื้อเลย</a>
-         </div>
-
-         <div class="box">
-            <img src="images/card-2.2.png" alt="">
-            <h3>ปั้มยอดไลค์ Facebook</h3>
-            <p>เพิ่มโพสต์ให้ติดฟีด</p>
-            <div class="info">
-               <h1><span>ราคาเริ่มต้น 7 บาท</span></h1>
-            </div>
-            <a href="https://line.me/ti/p/@gainlike-service" class="btn">สั่งซื้อเลย</a>
-         </div>
-
-         <div class="box">
-            <img src="images/card-4.png" alt="">
-            <h3>ปั้มยอดวิว YouTube</h3>
-            <p>เพิ่มยอดเข้าชมปลอดภัย</p>
-            <div class="info">
-               <h1><span>ราคาเริ่มต้น 14 บาท</span></h1>
-            </div>
-            <a href="https://line.me/ti/p/@gainlike-service" class="btn">สั่งซื้อเลย</a>
-         </div>
-
-                  <div class="box">
-            <img src="images/card-2.png" alt="">
-            <h3>เพิ่มคอมเมนต์โพสต์</h3>
-            <p>คอมเมนต์จริง แอคไม่ซ้ำ</p>
-            <div class="info">
-               <h1><span>ราคาเริ่มต้น 46 บาท</span></h1>
-            </div>
-            <a href="https://line.me/ti/p/@gainlike-service" class="btn">สั่งซื้อเลย</a>
-         </div>
-
-         <div class="box">
-            <img src="images/card-5.png" alt="">
-            <h3>เพิ่มผู้ติดตาม Shopee</h3>
-            <p>เพิ่มความน่าเชื่อถือร้านค้า</p>
-            <div class="info">
-               <h1><span>ราคาเริ่มต้น 8 บาท</span></h1>
-            </div>
-            <a href="https://line.me/ti/p/@gainlike-service" class="btn">สั่งซื้อเลย</a>
-         </div>
-
-         <div class="box">
-            <img src="images/card-6.png" alt="">
-            <h3>เพิ่มเพื่อน Line-OA</h3>
-            <p>เพิ่มความน่าเชื่อถือของไลน์</p>
-            <div class="info">
-               <h1><span>ราคาเริ่มต้น 59 บาท</span></h1>
-            </div>
-            <a href="https://line.me/ti/p/@gainlike-service" class="btn">สั่งซื้อเลย</a>
-         </div>
-
-      </div>
-
-   </section>
-
-</div>
-
-<!-- steps section starts  -->
-
-<section class="steps">
-
-   <div class="heading"><h3>จุดเด่นของ <span>Gain-Like Service</span></h3></div>
-
-   <div class="box-container">
-
-      <div class="box">
-         <img src="images/step-1.svg" alt="">
-         <h3>คุณภาพดี งานไว <br>เห็นผลใน 1–24 ชั่วโมง</h3>
-         <!-- <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis eveniet tempora ipsam libero quasi</p> -->
-      </div>
-
-      <div class="box">
-         <img src="images/step-2.svg" alt="">
-         <h3>รองรับทุกแพลตฟอร์ม (TikTok, Facebook, IG, YouTube, Shopee)</h3>
-         <!-- <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis eveniet tempora ipsam libero quasi</p> -->
-      </div>
-
-      <div class="box">
-         <img src="images/step-3.svg" alt="">
-         <h3>Gain-Like Service <br>มีประกันยอด 30 วัน – 1 ปี</h3>
-         <!-- <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis eveniet tempora ipsam libero quasi</p> -->
-      </div>
-
-      <div class="box">
-         <img src="images/step-4.svg" alt="">
-         <h3>ปลอดภัย 100% <br>ไม่ละเมิดนโยบายแพลตฟอร์ม</h3>
-         <!-- <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis eveniet tempora ipsam libero quasi</p> -->
-      </div>
-
-      <div class="box">
-         <img src="images/step-6.svg" alt="">
-         <h3>เพิ่มการมองเห็น <br>และการมีส่วนร่วม</h3>
-         <!-- <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis eveniet tempora ipsam libero quasi</p> -->
-      </div>
-
-      <div class="box">
-         <img src="images/step-5.svg" alt="">
-         <h3>มีทีมงานจริงดูแล <br>ผ่าน LINE ตลอดเวลา</h3>
-         <!-- <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis eveniet tempora ipsam libero quasi</p> -->
-      </div>
+      </section>
 
    </div>
 
-</section>
+   <!-- home section ends -->
 
-<!-- steps section ends -->
 
-<!-- reviews section starts  -->
+   <!-- Promotion section starts  -->
 
-<div class="reviews">
-
-   <section class="row">
-
-      <div class="content">
-         <h3>รีวิวจากลูกค้าจริง</h3>
-         <p>Gain-Like Service ให้ความสำคัญกับ การรักษาความลับของลูกค้าทุกคน ข้อมูลทั้งหมด เช่น แอคเคาท์ ชื่อบัญชี ลิงก์โพสต์ หรือรายละเอียดการสั่งซื้อ จะถูกเก็บเป็นความลับ ไม่ถูกเผยแพร่หรือแบ่งปันกับบุคคลภายนอกอย่างแน่นอน</p>
+   <div class="slideshow-container">
+      <div class="heading">
+         <h3><span>Promotion</span> แนะนำ</h3>
       </div>
 
-      <div class="slider-container">
-
-         <div class="slider">
-
-            <div class="slide active">
-               <p>ไลค์เพจเพิ่มขึ้นเยอะมาก โพสต์ติดฟีดง่ายขึ้น ลูกค้าเห็นแล้วเข้ามาสอบถามเยอะขึ้นด้วย ดีมากครับ</p>
-               <div class="user">
-                  <img src="images/pic-1.png" alt="">
-                  <div>
-                     <h3>ลูกค้าที่ใช้บริการ Gain-Like Service</h3>
-                     <p>Facebook Page Owner</p>
-                     <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                     </div>
-                  </div>
-                  <i class="fas fa-quote-right"></i>
-               </div>
-            </div>
-
-            <div class="slide">
-               <p>เพิ่มผู้ติดตามร้าน Shopee แล้วยอดขายดีขึ้นเยอะ ลูกค้าเริ่มไว้วางใจร้านมากขึ้น คุ้มค่ามากค่ะ</p>
-               <div class="user">
-                  <img src="images/pic-1.png" alt="">
-                  <div>
-                     <h3>ลูกค้าที่ใช้บริการ Gain-Like Service</h3>
-                     <p>Shopee Seller</p>
-                     <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                     </div>
-                  </div>
-                  <i class="fas fa-quote-right"></i>
-               </div>
-            </div>
-
-            <div class="slide">
-               <p>เพิ่มเพื่อน Line OA แล้วธุรกิจเติบโตเร็วขึ้น ได้ลูกค้าใหม่เยอะมาก บริการดีเยี่ยมค่ะ แนะนำเลย</p>
-               <div class="user">
-                  <img src="images/pic-1.png" alt="">
-                  <div>
-                     <h3>ลูกค้าที่ใช้บริการ Gain-Like Service</h3>
-                     <p>Line OA Business</p>
-                     <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                     </div>
-                  </div>
-                  <i class="fas fa-quote-right"></i>
-               </div>
-            </div>
-
-            <div class="slide">
-               <p>สั่งเพิ่มผู้ติดตามไป 1,000 ฟอล งานไวมาก ได้จริงทุกคนค่ะ! คอนเทนต์ของเราเริ่มติดเทรนด์มากขึ้นเยอะเลย</p>
-               <div class="user">
-                  <img src="images/pic-1.png" alt="">
-                  <div>
-                     <h3>ลูกค้าที่ใช้บริการ Gain-Like Service</h3>
-                     <p>TikTok Creator</p>
-                     <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                     </div>
-                  </div>
-                  <i class="fas fa-quote-right"></i>
-               </div>
-            </div>
-
-         </div>
-
-         <div class="controls">
-            <div id="prev" onclick="prev()" class="fas fa-angle-left"></div>
-            <div id="next" onclick="next()" class="fas fa-angle-right"></div>
-         </div>
-
+      <div class="mySlides fade">
+         <a href="https://line.me/ti/p/@gainlike-service" target="_blank">
+            <img src="/images/Promotion-โปร-11.11-Maga-Sale.png" style="width: 100%;">
+         </a>
       </div>
+
+      <div class="mySlides fade">
+         <a href="https://line.me/ti/p/@gainlike-service" target="_blank">
+            <img src="/images/Promotion3.png" style="width: 100%;">
+         </a>
+      </div>
+
+      <div class="mySlides fade">
+         <a href="https://line.me/ti/p/@gainlike-service" target="_blank">
+            <img src="/images/Promotion-100-บาทซื้ออะไรได้บ้าง.png" style="width: 100%;">
+         </a>
+      </div>
+
+      <div class="mySlides fade">
+         <a href="https://line.me/ti/p/@gainlike-service" target="_blank">
+            <img src="/images/Promotion-อยากปักสินค้าบน-TikTok--แต่ติดที่-‘ฟอลยังไม่ถึง-1,000’.png"
+               style="width: 100%;">
+         </a>
+      </div>
+
+   </div>
+   <br>
+
+   <!-- The dots/circles -->
+   <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+      <span class="dot" onclick="currentSlide(4)"></span>
+   </div>
+
+   <script>
+      let slideIndex = 0;
+      showSlides();
+
+      function showSlides() {
+         let i;
+         let slides = document.getElementsByClassName("mySlides");
+         let dots = document.getElementsByClassName("dot");
+         for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+         }
+         slideIndex++;
+         if (slideIndex > slides.length) { slideIndex = 1 }
+         for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+         }
+         slides[slideIndex - 1].style.display = "block";
+         dots[slideIndex - 1].className += " active";
+         setTimeout(showSlides, 3000);
+      }
+   </script>
+
+   <!-- Promotion section ends -->
+
+   <!-- about section starts  -->
+
+   <section class="about" id="about">
+
+      <div class="heading">
+         <h3>Gain-Like service<span> เหมาะสำหรับใคร ?</span></h3>
+      </div>
+      <div class="box-container">
+
+         <div class="box">
+            <div class="info">
+               <img src="images/info-1.svg" alt="">
+               <h3><span>ร้านค้าออนไลน์</span></h3>
+            </div>
+            <p>เพิ่มยอดขายและความน่าเชื่อถือให้ร้านของคุณ ดูมืออาชีพยิ่งขึ้นในทุกช่องทางออนไลน์</p>
+            <a href="https://line.me/ti/p/@gainlike-service" class="btn-2">สั่งซื้อบริการ <i
+                  class="fas fa-arrow-right"></i></a>
+         </div>
+
+         <div class="box">
+            <div class="info">
+               <img src="images/info-2.svg" alt="">
+               <h3><span>อินฟลูเอนเซอร์</span></h3>
+            </div>
+            <p>สร้างภาพลักษณ์ที่น่าเชื่อถือ ดึงดูดผู้ติดตาม และเพิ่มโอกาสในการร่วมงานกับแบรนด์</p>
+            <a href="https://line.me/ti/p/@gainlike-service" class="btn-2">สั่งซื้อบริการ <i
+                  class="fas fa-arrow-right"></i></a>
+         </div>
+
+         <div class="box">
+            <div class="info">
+               <img src="images/info-3.svg" alt="">
+               <h3><span>เจ้าของแบรนด์</span></h3>
+            </div>
+            <p>เสริมความน่าเชื่อถือให้แบรนด์ เติบโตอย่างมั่นคงด้วยภาพลักษณ์ที่โดดเด่นและดูมืออาชีพ</p>
+            <a href="https://line.me/ti/p/@gainlike-service" class="btn-2">สั่งซื้อบริการ <i
+                  class="fas fa-arrow-right"></i></a>
+         </div>
+
+         <div class="box">
+            <div class="info">
+               <img src="images/info-4.svg" alt="">
+               <h3><span>ต้องการความน่าเชื่อถือ</span></h3>
+
+            </div>
+            <p>เปลี่ยนความไว้วางใจให้กลายเป็นยอดขาย ด้วยระบบที่ช่วยยกระดับภาพลักษณ์ของคุณ</p>
+            <a href="https://line.me/ti/p/@gainlike-service" class="btn-2">สั่งซื้อบริการ <i
+                  class="fas fa-arrow-right"></i></a>
+         </div>
+
 
    </section>
 
-</div>
+   <!-- about section ends -->
 
-<!-- reviews section ends  -->
+   <!-- options section starts  -->
 
-<!-- download section starts  -->
+   <div class="options" id="options">
 
-<section class="download">
+      <section>
 
-   <!-- <div class="heading"><span>download</span> now!</div> -->
+         <div class="heading">
+            <h3><span>บริการยอดนิยมของเรา</span></h3>
+         </div>
 
-   <div class="row">
+         <div class="box-container">
 
-      <div class="content">
-         <h3>อย่าปล่อยให้บัญชีของคุณ<br><span>เงียบอีกต่อไป!</span></h3>
-         <p>เพิ่มผู้ติดตาม ปั้มยอดฟอล ปั้มยอดไลค์ และปั้มยอดวิว <br>เพื่อให้แบรนด์ของคุณโดดเด่นกว่าใคร</p>
-         <!-- <a href="#" class="btn"> LINE: @gainlike-service (มี@) <i class="fas fa-arrow-right"></i></a> -->
+            <div class="box">
+               <a href="https://line.me/ti/p/@gainlike-service" target="_blank"><img src="images/card-7.png" alt=""></a>
+               <h3>เพิ่มผู้ติดตาม TikTok <br>ปั๊มยอดฟอล ติ๊กต็อก</h3>
+               <p>อยากมียอดฟอล TikTok เยอะขึ้น <br>เพื่อเปิดไลฟ์ ขายของ หรือปักตะกร้า ?</p>
+               <div class="info">
+                  <p><span>Gain Like ช่วยคุณได้!</span></p>
+                  <p><span>เพิ่มผู้ติดตาม tiktok คนไทยแท้</span></p>
+                  <p><span>ปั้มยอดไลค์ ติ๊กต็อก ให้โพสต์ติดหน้า For You</span></p>
+                  <p><span>ปั้มยอดวิว tiktok ช่วยให้วิดีโอพุ่งแรง</span></p>
+               </div>
+               <!-- <a href="#" class="btn">สั่งซื้อบริการ</a> -->
+            </div>
+
+            <div class="box">
+               <a href="https://line.me/ti/p/@gainlike-service" target="_blank"><img src="images/card-8.png" alt=""></a>
+               <h3>เพิ่มผู้ติดตาม Facebook <br>ปั้มยอดฟอล เฟส</h3>
+               <p>อยากให้เพจหรือโปรไฟล์ดูน่าเชื่อถือ <br>มีผู้ติดตามหลักพันหลักหมื่น ?</p>
+               <div class="info">
+                  <p><span>เพิ่มผู้ติดตาม facebook คนไทยจริง</span></p>
+                  <p><span>ปั้มยอดฟอล เฟส เพิ่มภาพลักษณ์ให้เพจธุรกิจ</span></p>
+                  <p><span>ปั้มยอดไลค์ facebook / ปั้มยอดวิว facebook</span></p>
+                  <p><span>เพิ่มคอมเม้นโพส facebook จากบัญชีจริง</span></p>
+               </div>
+               <!-- <a href="#" class="btn">สั่งซื้อบริการ</a> -->
+            </div>
+
+            <div class="box">
+               <a href="https://line.me/ti/p/@gainlike-service" target="_blank"><img src="images/card-9.png" alt=""></a>
+               <h3>เพิ่มผู้ติดตาม IG <br>ปั๊มยอดฟอล ไอจี</h3>
+               <p>สร้างภาพลักษณ์ IG ให้โดดเด่น <br>และเพิ่ม Engagement ได้ง่าย ๆ</p>
+               <div class="info">
+                  <p><span>ปั้มยอดฟอล ig คนไทยคุณภาพ</span></p>
+                  <p><span>ปั้มยอดไลก์ ไอจี เพิ่มยอดโพสต์ให้ดูปัง</span></p>
+                  <p><span>เพิ่มคอมเมนต์โพสต์ ig จากคนจริง</span></p>
+                  <p><span>ปั้มยอดวิว Instagtam สำหรับ Reels และ Story</span></p>
+               </div>
+               <!-- <a href="#" class="btn">สั่งซื้อบริการ</a> -->
+            </div>
+
+            <div class="box">
+               <a href="https://line.me/ti/p/@gainlike-service" target="_blank"><img src="images/card-10.png"
+                     alt=""></a>
+               <h3>เพิ่มผู้ติดตาม YouTube <br>ปั๊มยอดวิว ยูทูป</h3>
+               <p>อยากปลดล็อกช่องสร้างรายได้ ? <br>เพิ่มยอดวิวและยอดซับได้จริง</p>
+               <div class="info">
+                  <p><span>เพิ่มผู้ติดตาม youtube คนจริง</span></p>
+                  <p><span>ปั้มยอดวิว youtube เพื่อดันคลิปติดแนะนำ</span></p>
+                  <p><span>ปั้มยอดไลค์ ยูทูป เพิ่มความน่าเชื่อถือของช่อง</span></p>
+               </div>
+               <!-- <a href="#" class="btn">สั่งซื้อบริการ</a> -->
+            </div>
+
+            <div class="box">
+               <a href="https://line.me/ti/p/@gainlike-service" target="_blank"><img src="images/card-11.png"
+                     alt=""></a>
+               <h3>เพิ่มเพื่อน Line-OA <br>ปั้มยอดเพื่อน ไลน์</h3>
+               <p>ขยายฐานลูกค้าและเพิ่มยอดเพื่อนบน Line OA <br>ให้แบรนด์ของคุณเติบโตอย่างมืออาชีพ</p>
+               <div class="info">
+                  <p><span>เพิ่มเพื่อน OA จริง คนไทย 100%</span></p>
+                  <p><span>เพิ่มยอด Reach และ Broadcast ของ Line OA</span></p>
+                  <p><span>เหมาะกับร้านค้า แบรนด์ และ อินฟลูเอนเซอร์</span></p>
+               </div>
+               <!-- <a href="#" class="btn">สั่งซื้อบริการ</a> -->
+            </div>
+
+            <div class="box">
+               <a href="https://line.me/ti/p/@gainlike-service" target="_blank"><img src="images/card-12.png"
+                     alt=""></a>
+               <h3>เพิ่มผู้ติดตาม Shopee<br>ปั๊มยอดวิว ช้อปปี้</h3>
+               <p>เพิ่มยอดฟอลร้าน Shopee <br>เพื่อให้ร้านค้าดูน่าเชื่อถือ และดันยอดขาย!</p>
+               <div class="info">
+                  <p><span>เพิ่มผู้ติดตาม Shopee จริง</span></p>
+                  <p><span>ปั๊มยอดวิวสินค้า Shopee เพิ่มการมองเห็น</span></p>
+                  <p><span>เหมาะสำหรับร้านใหม่และร้านที่อยากติดหน้าแรก</span></p>
+               </div>
+               <!-- <a href="#" class="btn">สั่งซื้อบริการ</a> -->
+            </div>
+
+         </div>
+
+      </section>
+
+   </div>
+
+   <!-- options section ends -->
+
+   <div class="options2" id="options2">
+
+      <section>
+
+         <div class="heading2">
+            <h3>แพ็กเกจยอดนิยม</h3>
+         </div>
+
+         <div class="box-container">
+
+            <div class="box">
+               <img src="images/card-1.png" alt="">
+               <h3>เพิ่มผู้ติดตาม TikTok</h3>
+               <p>ฟอลจริง คนไทยแท้</p>
+               <div class="info">
+                  <h1><span>ราคาเริ่มต้น 10 บาท</span></h1>
+               </div>
+               <a href="https://line.me/ti/p/@gainlike-service" class="btn">สั่งซื้อเลย</a>
+            </div>
+
+            <div class="box">
+               <img src="images/card-2.2.png" alt="">
+               <h3>ปั้มยอดไลค์ Facebook</h3>
+               <p>เพิ่มโพสต์ให้ติดฟีด</p>
+               <div class="info">
+                  <h1><span>ราคาเริ่มต้น 7 บาท</span></h1>
+               </div>
+               <a href="https://line.me/ti/p/@gainlike-service" class="btn">สั่งซื้อเลย</a>
+            </div>
+
+            <div class="box">
+               <img src="images/card-4.png" alt="">
+               <h3>ปั้มยอดวิว YouTube</h3>
+               <p>เพิ่มยอดเข้าชมปลอดภัย</p>
+               <div class="info">
+                  <h1><span>ราคาเริ่มต้น 14 บาท</span></h1>
+               </div>
+               <a href="https://line.me/ti/p/@gainlike-service" class="btn">สั่งซื้อเลย</a>
+            </div>
+
+            <div class="box">
+               <img src="images/card-2.png" alt="">
+               <h3>เพิ่มคอมเมนต์โพสต์</h3>
+               <p>คอมเมนต์จริง แอคไม่ซ้ำ</p>
+               <div class="info">
+                  <h1><span>ราคาเริ่มต้น 46 บาท</span></h1>
+               </div>
+               <a href="https://line.me/ti/p/@gainlike-service" class="btn">สั่งซื้อเลย</a>
+            </div>
+
+            <div class="box">
+               <img src="images/card-5.png" alt="">
+               <h3>เพิ่มผู้ติดตาม Shopee</h3>
+               <p>เพิ่มความน่าเชื่อถือร้านค้า</p>
+               <div class="info">
+                  <h1><span>ราคาเริ่มต้น 8 บาท</span></h1>
+               </div>
+               <a href="https://line.me/ti/p/@gainlike-service" class="btn">สั่งซื้อเลย</a>
+            </div>
+
+            <div class="box">
+               <img src="images/card-6.png" alt="">
+               <h3>เพิ่มเพื่อน Line-OA</h3>
+               <p>เพิ่มความน่าเชื่อถือของไลน์</p>
+               <div class="info">
+                  <h1><span>ราคาเริ่มต้น 59 บาท</span></h1>
+               </div>
+               <a href="https://line.me/ti/p/@gainlike-service" class="btn">สั่งซื้อเลย</a>
+            </div>
+
+         </div>
+
+      </section>
+
+   </div>
+
+   <!-- steps section starts  -->
+
+   <section class="steps">
+
+      <div class="heading">
+         <h3>จุดเด่นของ <span>Gain-Like Service</span></h3>
       </div>
 
       <div class="box-container">
 
          <div class="box">
-            <i class="fab fa-facebook icon"></i>
-            <h3>Facebook Page</h3>
-            <a href="https://www.facebook.com/profile.php?id=61557690340003" class="btn-2">ติดตามเพื่อรู้โปรโมชั่นก่อนใคร</i></a>
+            <img src="images/step-1.svg" alt="">
+            <h3>คุณภาพดี งานไว <br>เห็นผลใน 1–24 ชั่วโมง</h3>
+            <!-- <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis eveniet tempora ipsam libero quasi</p> -->
          </div>
 
          <div class="box">
-            <i class="fab fa-line icon"></i>
-            <h3>Line-OA</h3>
-            <a href="https://line.me/ti/p/@gainlike-service" class="btn-2">เพิ่มเพื่อนเพื่อรับส่วนลดพิเศษ</a>
+            <img src="images/step-2.svg" alt="">
+            <h3>รองรับทุกแพลตฟอร์ม (TikTok, Facebook, IG, YouTube, Shopee)</h3>
+            <!-- <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis eveniet tempora ipsam libero quasi</p> -->
+         </div>
+
+         <div class="box">
+            <img src="images/step-3.svg" alt="">
+            <h3>Gain-Like Service <br>มีประกันยอด 30 วัน – 1 ปี</h3>
+            <!-- <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis eveniet tempora ipsam libero quasi</p> -->
+         </div>
+
+         <div class="box">
+            <img src="images/step-4.svg" alt="">
+            <h3>ปลอดภัย 100% <br>ไม่ละเมิดนโยบายแพลตฟอร์ม</h3>
+            <!-- <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis eveniet tempora ipsam libero quasi</p> -->
+         </div>
+
+         <div class="box">
+            <img src="images/step-6.svg" alt="">
+            <h3>เพิ่มการมองเห็น <br>และการมีส่วนร่วม</h3>
+            <!-- <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis eveniet tempora ipsam libero quasi</p> -->
+         </div>
+
+         <div class="box">
+            <img src="images/step-5.svg" alt="">
+            <h3>มีทีมงานจริงดูแล <br>ผ่าน LINE ตลอดเวลา</h3>
+            <!-- <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis eveniet tempora ipsam libero quasi</p> -->
          </div>
 
       </div>
+
+   </section>
+
+   <!-- steps section ends -->
+
+   <!-- reviews section starts  -->
+
+   <div class="reviews">
+
+      <section class="row">
+
+         <div class="content">
+            <h3>รีวิวจากลูกค้าจริง</h3>
+            <p>Gain-Like Service ให้ความสำคัญกับ การรักษาความลับของลูกค้าทุกคน ข้อมูลทั้งหมด เช่น แอคเคาท์ ชื่อบัญชี
+               ลิงก์โพสต์ หรือรายละเอียดการสั่งซื้อ จะถูกเก็บเป็นความลับ
+               ไม่ถูกเผยแพร่หรือแบ่งปันกับบุคคลภายนอกอย่างแน่นอน</p>
+         </div>
+
+         <div class="slider-container">
+
+            <div class="slider">
+
+               <div class="slide active">
+                  <p>ไลค์เพจเพิ่มขึ้นเยอะมาก โพสต์ติดฟีดง่ายขึ้น ลูกค้าเห็นแล้วเข้ามาสอบถามเยอะขึ้นด้วย ดีมากครับ</p>
+                  <div class="user">
+                     <img src="images/pic-1.png" alt="">
+                     <div>
+                        <h3>ลูกค้าที่ใช้บริการ Gain-Like Service</h3>
+                        <p>Facebook Page Owner</p>
+                        <div class="stars">
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                        </div>
+                     </div>
+                     <i class="fas fa-quote-right"></i>
+                  </div>
+               </div>
+
+               <div class="slide">
+                  <p>เพิ่มผู้ติดตามร้าน Shopee แล้วยอดขายดีขึ้นเยอะ ลูกค้าเริ่มไว้วางใจร้านมากขึ้น คุ้มค่ามากค่ะ</p>
+                  <div class="user">
+                     <img src="images/pic-1.png" alt="">
+                     <div>
+                        <h3>ลูกค้าที่ใช้บริการ Gain-Like Service</h3>
+                        <p>Shopee Seller</p>
+                        <div class="stars">
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                        </div>
+                     </div>
+                     <i class="fas fa-quote-right"></i>
+                  </div>
+               </div>
+
+               <div class="slide">
+                  <p>เพิ่มเพื่อน Line OA แล้วธุรกิจเติบโตเร็วขึ้น ได้ลูกค้าใหม่เยอะมาก บริการดีเยี่ยมค่ะ แนะนำเลย</p>
+                  <div class="user">
+                     <img src="images/pic-1.png" alt="">
+                     <div>
+                        <h3>ลูกค้าที่ใช้บริการ Gain-Like Service</h3>
+                        <p>Line OA Business</p>
+                        <div class="stars">
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="far fa-star"></i>
+                        </div>
+                     </div>
+                     <i class="fas fa-quote-right"></i>
+                  </div>
+               </div>
+
+               <div class="slide">
+                  <p>สั่งเพิ่มผู้ติดตามไป 1,000 ฟอล งานไวมาก ได้จริงทุกคนค่ะ! คอนเทนต์ของเราเริ่มติดเทรนด์มากขึ้นเยอะเลย
+                  </p>
+                  <div class="user">
+                     <img src="images/pic-1.png" alt="">
+                     <div>
+                        <h3>ลูกค้าที่ใช้บริการ Gain-Like Service</h3>
+                        <p>TikTok Creator</p>
+                        <div class="stars">
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                        </div>
+                     </div>
+                     <i class="fas fa-quote-right"></i>
+                  </div>
+               </div>
+
+            </div>
+
+            <div class="controls">
+               <div id="prev" onclick="prev()" class="fas fa-angle-left"></div>
+               <div id="next" onclick="next()" class="fas fa-angle-right"></div>
+            </div>
+
+         </div>
+
+      </section>
 
    </div>
 
-</section>
+   <!-- reviews section ends  -->
 
-<!-- newsletter section starts  -->
+   <!-- download section starts  -->
 
-<div class="newsletter">
+   <section class="download">
 
-   <section>
+      <!-- <div class="heading"><span>download</span> now!</div> -->
 
-      <form action="">
-         <h3>Gain-Like Service ให้ความสำคัญ<br>กับการรักษาความลับของลูกค้าทุกคน</h3>
-         <p>ปลอดภัย 100%, ข้อมูลไม่ถูกเผยแพร่, บริการเพิ่มผู้ติดตามที่ปลอดภัย</p>
-      </form>
+      <div class="row">
 
-   </section>
+         <div class="content">
+            <h3>อย่าปล่อยให้บัญชีของคุณ<br><span>เงียบอีกต่อไป!</span></h3>
+            <p>เพิ่มผู้ติดตาม ปั้มยอดฟอล ปั้มยอดไลค์ และปั้มยอดวิว <br>เพื่อให้แบรนด์ของคุณโดดเด่นกว่าใคร</p>
+            <!-- <a href="#" class="btn"> LINE: @gainlike-service (มี@) <i class="fas fa-arrow-right"></i></a> -->
+         </div>
 
-</div>
+         <div class="box-container">
 
-<!-- newsletter section ends -->
-
-<!-- FAQ section starts  -->
-
-<main class="container">
-    <h3 class="page-title">คำถามที่พบบ่อย</h3>
-
-
-    <section class="faq" id="faq" aria-label="คำถามที่พบบ่อย">
-
-      <article class="faq-item" data-faq>
-        <button class="faq-header" aria-expanded="false" aria-controls="panel-1" id="btn-1">
-          ปั๊มยอดฟอล IG หรือ TikTok ปลอดภัยไหม?
-          <svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <div class="faq-panel-wrap">
-          <div class="faq-panel-inner">
-            <div class="faq-panel" id="panel-1" role="region" aria-labelledby="btn-1">
-              ปลอดภัยแน่นอน ระบบของเราใช้เทคนิคเฉพาะที่ไม่กระทบต่อบัญชีของคุณ เราไม่ต้องการรหัสผ่าน และทำงานผ่านระบบที่ปลอดภัยมาตรฐานสากล ไม่มีความเสี่ยงที่บัญชีจะถูกแบน
+            <div class="box">
+               <i class="fab fa-facebook icon"></i>
+               <h3>Facebook Page</h3>
+               <a href="https://www.facebook.com/profile.php?id=61557690340003"
+                  class="btn-2">ติดตามเพื่อรู้โปรโมชั่นก่อนใคร</i></a>
             </div>
-          </div>
-        </div>
-      </article>
 
-      <article class="faq-item" data-faq>
-        <button class="faq-header" aria-expanded="false" aria-controls="panel-2" id="btn-2">
-          ใช้เวลานานแค่ไหนกว่าจะเห็นผล?
-          <svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <div class="faq-panel-wrap"><div class="faq-panel-inner">
-          <div class="faq-panel" id="panel-2" role="region" aria-labelledby="btn-2">
-            ส่วนใหญ่จะเห็นผลภายใน 1–24 ชั่วโมง ขึ้นอยู่กับจำนวนยอดที่ต้องการและแพลตฟอร์ม บางบริการอาจเห็นผลเร็วกว่า เช่น การเพิ่มไลค์หรือวิว ส่วนผู้ติดตามอาจใช้เวลาประมาณ 12-24 ชั่วโมงเพื่อความเป็นธรรมชาติ
-          </div>
-        </div></div>
-      </article>
+            <div class="box">
+               <i class="fab fa-line icon"></i>
+               <h3>Line-OA</h3>
+               <a href="https://line.me/ti/p/@gainlike-service" class="btn-2">เพิ่มเพื่อนเพื่อรับส่วนลดพิเศษ</a>
+            </div>
 
-      <article class="faq-item" data-faq>
-        <button class="faq-header" aria-expanded="false" aria-controls="panel-3" id="btn-3">
-          มีการรับประกันไหม?
-          <svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <div class="faq-panel-wrap"><div class="faq-panel-inner">
-          <div class="faq-panel" id="panel-3" role="region" aria-labelledby="btn-3">
-            มีทุกแพ็กเกจ! หากยอดลดในระยะเวลาประกัน (30 วัน ถึง 1 ปี ขึ้นอยู่กับแพ็กเกจ) เราจะเคลมให้ฟรีทันที คุณไม่ต้องกังวลเรื่องยอดหายหรือลดลง เพราะเรามีระบบดูแลอย่างต่อเนื่อง
-          </div>
-        </div></div>
-      </article>
-
-      <article class="faq-item" data-faq>
-        <button class="faq-header" aria-expanded="false" aria-controls="panel-4" id="btn-4">
-          ต้องให้รหัสผ่านหรือไม่?
-          <svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <div class="faq-panel-wrap"><div class="faq-panel-inner">
-          <div class="faq-panel" id="panel-4" role="region" aria-labelledby="btn-4">
-            ไม่ต้องให้รหัสผ่านเลยค่ะ เราใช้แค่ลิงก์โปรไฟล์ ลิงก์โพสต์ หรือ Username เท่านั้น ระบบของเราปลอดภัยและไม่ต้องเข้าถึงบัญชีของคุณ
-          </div>
-        </div></div>
-      </article>
-
-      <article class="faq-item" data-faq>
-        <button class="faq-header" aria-expanded="false" aria-controls="panel-5" id="btn-5">
-          รองรับแพลตฟอร์มอะไรบ้าง?
-          <svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <div class="faq-panel-wrap"><div class="faq-panel-inner">
-          <div class="faq-panel" id="panel-5" role="region" aria-labelledby="btn-5">
-            เรารองรับทุกแพลตฟอร์มยอดนิยม ได้แก่ TikTok, Facebook, Instagram, YouTube, Shopee, Line-OA, Twitter (X), Threads และอื่นๆ อีกมากมาย หากคุณต้องการแพลตฟอร์มอื่น สามารถสอบถามทีมงานได้เลยค่ะ
-          </div>
-        </div></div>
-      </article>
-
-      <article class="faq-item" data-faq>
-        <button class="faq-header" aria-expanded="false" aria-controls="panel-6" id="btn-6">
-          ราคาเริ่มต้นเท่าไหร่?
-          <svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <div class="faq-panel-wrap"><div class="faq-panel-inner">
-          <div class="faq-panel" id="panel-6" role="region" aria-labelledby="btn-6">
-            ราคาเริ่มต้นเพียง 7 บาทเท่านั้น สำหรับบริการปั้มยอดไลค์ Facebook แต่ละบริการมีราคาที่แตกต่างกันตามประเภทและจำนวนที่ต้องการ คุณสามารถเลือกแพ็กเกจที่เหมาะกับงบประมาณของคุณได้
-          </div>
-        </div></div>
-      </article>
-
-      <article class="faq-item" data-faq>
-        <button class="faq-header" aria-expanded="false" aria-controls="panel-7" id="btn-7">
-          ต้องการข้อมูลอะไรบ้างในการสั่งซื้อ?
-          <svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <div class="faq-panel-wrap"><div class="faq-panel-inner">
-          <div class="faq-panel" id="panel-7" role="region" aria-labelledby="btn-7">
-            ขึ้นอยู่กับบริการ โดยทั่วไปต้องการแค่ลิงก์โปรไฟล์หรือลิงก์โพสต์ที่ต้องการเพิ่มยอด สำหรับบางบริการอาจต้องการข้อมูลเพิ่มเติมเล็กน้อย แต่ไม่ต้องกังวล ทีมงานจะแนะนำคุณทุกขั้นตอน
-          </div>
-        </div></div>
-      </article>
-
-      <article class="faq-item" data-faq>
-        <button class="faq-header" aria-expanded="false" aria-controls="panel-8" id="btn-8">
-          ติดต่อได้ที่ไหน?
-          <svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <div class="faq-panel-wrap"><div class="faq-panel-inner">
-          <div class="faq-panel" id="panel-8" role="region" aria-labelledby="btn-8">
-            ติดต่อได้ผ่าน <a href="https://line.me/ti/p/@gainlike-service">LINE: @gainlike-service (มี@)</a> หรือ <a href="https://www.facebook.com/profile.php?id=61557690340003">Facebook Page: Gain-Like Service</a>ทีมงานพร้อมตอบทุกคำถามและให้คำปรึกษาตลอด 24 ชั่วโมง
-          </div>
-        </div></div>
-      </article>
-    </section>
-  </main>
-
-<!-- FAQ section ends -->
-
-<!-- footer section starts  -->
-<footer class="footer">
-
-   <section>
-
-      <div class="flex">
-
-          <a href="https://line.me/ti/p/@gainlike-service" class="logo"><img src="images/gain-like-service-final-09.png" width="15%" alt="Logo">
-
-         <a href="https://line.me/ti/p/@gainlike-service" class="extra-link">ติดต่อเพื่อสั่งซื้อบริการ</a>
-
-      </div>
-
-      <div class="credit">
-
-         <p>&copy; 2025 Gain-Like Service. All rights reserved. <span>บริการโดยทีมงานไทย มืออาชีพด้านการตลาดออนไลน์</span></p>
-
-         <div class="share">
-            <a href="https://line.me/ti/p/@gainlike-service" class="fab fa-line"></a>
-            <a href="https://www.facebook.com/profile.php?id=61557690340003" class="fab fa-facebook"></a>
          </div>
 
       </div>
-      
+
    </section>
 
-</footer>
+   <!-- newsletter section starts  -->
 
-<!-- footer section ends -->
+   <div class="newsletter">
+
+      <section>
+
+         <form action="">
+            <h3>Gain-Like Service ให้ความสำคัญ<br>กับการรักษาความลับของลูกค้าทุกคน</h3>
+            <p>ปลอดภัย 100%, ข้อมูลไม่ถูกเผยแพร่, บริการเพิ่มผู้ติดตามที่ปลอดภัย</p>
+         </form>
+
+      </section>
+
+   </div>
+
+   <!-- newsletter section ends -->
+
+   <!-- FAQ section starts  -->
+
+   <main class="container">
+      <h3 class="page-title">คำถามที่พบบ่อย</h3>
+
+
+      <section class="faq" id="faq" aria-label="คำถามที่พบบ่อย">
+
+         <article class="faq-item" data-faq>
+            <button class="faq-header" aria-expanded="false" aria-controls="panel-1" id="btn-1">
+               ปั๊มยอดฟอล IG หรือ TikTok ปลอดภัยไหม?
+               <svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                     stroke-linejoin="round" />
+               </svg>
+            </button>
+            <div class="faq-panel-wrap">
+               <div class="faq-panel-inner">
+                  <div class="faq-panel" id="panel-1" role="region" aria-labelledby="btn-1">
+                     ปลอดภัยแน่นอน ระบบของเราใช้เทคนิคเฉพาะที่ไม่กระทบต่อบัญชีของคุณ เราไม่ต้องการรหัสผ่าน
+                     และทำงานผ่านระบบที่ปลอดภัยมาตรฐานสากล ไม่มีความเสี่ยงที่บัญชีจะถูกแบน
+                  </div>
+               </div>
+            </div>
+         </article>
+
+         <article class="faq-item" data-faq>
+            <button class="faq-header" aria-expanded="false" aria-controls="panel-2" id="btn-2">
+               ใช้เวลานานแค่ไหนกว่าจะเห็นผล?
+               <svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                     stroke-linejoin="round" />
+               </svg>
+            </button>
+            <div class="faq-panel-wrap">
+               <div class="faq-panel-inner">
+                  <div class="faq-panel" id="panel-2" role="region" aria-labelledby="btn-2">
+                     ส่วนใหญ่จะเห็นผลภายใน 1–24 ชั่วโมง ขึ้นอยู่กับจำนวนยอดที่ต้องการและแพลตฟอร์ม
+                     บางบริการอาจเห็นผลเร็วกว่า เช่น การเพิ่มไลค์หรือวิว ส่วนผู้ติดตามอาจใช้เวลาประมาณ 12-24
+                     ชั่วโมงเพื่อความเป็นธรรมชาติ
+                  </div>
+               </div>
+            </div>
+         </article>
+
+         <article class="faq-item" data-faq>
+            <button class="faq-header" aria-expanded="false" aria-controls="panel-3" id="btn-3">
+               มีการรับประกันไหม?
+               <svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                     stroke-linejoin="round" />
+               </svg>
+            </button>
+            <div class="faq-panel-wrap">
+               <div class="faq-panel-inner">
+                  <div class="faq-panel" id="panel-3" role="region" aria-labelledby="btn-3">
+                     มีทุกแพ็กเกจ! หากยอดลดในระยะเวลาประกัน (30 วัน ถึง 1 ปี ขึ้นอยู่กับแพ็กเกจ) เราจะเคลมให้ฟรีทันที
+                     คุณไม่ต้องกังวลเรื่องยอดหายหรือลดลง เพราะเรามีระบบดูแลอย่างต่อเนื่อง
+                  </div>
+               </div>
+            </div>
+         </article>
+
+         <article class="faq-item" data-faq>
+            <button class="faq-header" aria-expanded="false" aria-controls="panel-4" id="btn-4">
+               ต้องให้รหัสผ่านหรือไม่?
+               <svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                     stroke-linejoin="round" />
+               </svg>
+            </button>
+            <div class="faq-panel-wrap">
+               <div class="faq-panel-inner">
+                  <div class="faq-panel" id="panel-4" role="region" aria-labelledby="btn-4">
+                     ไม่ต้องให้รหัสผ่านเลยค่ะ เราใช้แค่ลิงก์โปรไฟล์ ลิงก์โพสต์ หรือ Username เท่านั้น
+                     ระบบของเราปลอดภัยและไม่ต้องเข้าถึงบัญชีของคุณ
+                  </div>
+               </div>
+            </div>
+         </article>
+
+         <article class="faq-item" data-faq>
+            <button class="faq-header" aria-expanded="false" aria-controls="panel-5" id="btn-5">
+               รองรับแพลตฟอร์มอะไรบ้าง?
+               <svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                     stroke-linejoin="round" />
+               </svg>
+            </button>
+            <div class="faq-panel-wrap">
+               <div class="faq-panel-inner">
+                  <div class="faq-panel" id="panel-5" role="region" aria-labelledby="btn-5">
+                     เรารองรับทุกแพลตฟอร์มยอดนิยม ได้แก่ TikTok, Facebook, Instagram, YouTube, Shopee, Line-OA, Twitter
+                     (X), Threads และอื่นๆ อีกมากมาย หากคุณต้องการแพลตฟอร์มอื่น สามารถสอบถามทีมงานได้เลยค่ะ
+                  </div>
+               </div>
+            </div>
+         </article>
+
+         <article class="faq-item" data-faq>
+            <button class="faq-header" aria-expanded="false" aria-controls="panel-6" id="btn-6">
+               ราคาเริ่มต้นเท่าไหร่?
+               <svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                     stroke-linejoin="round" />
+               </svg>
+            </button>
+            <div class="faq-panel-wrap">
+               <div class="faq-panel-inner">
+                  <div class="faq-panel" id="panel-6" role="region" aria-labelledby="btn-6">
+                     ราคาเริ่มต้นเพียง 7 บาทเท่านั้น สำหรับบริการปั้มยอดไลค์ Facebook
+                     แต่ละบริการมีราคาที่แตกต่างกันตามประเภทและจำนวนที่ต้องการ
+                     คุณสามารถเลือกแพ็กเกจที่เหมาะกับงบประมาณของคุณได้
+                  </div>
+               </div>
+            </div>
+         </article>
+
+         <article class="faq-item" data-faq>
+            <button class="faq-header" aria-expanded="false" aria-controls="panel-7" id="btn-7">
+               ต้องการข้อมูลอะไรบ้างในการสั่งซื้อ?
+               <svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                     stroke-linejoin="round" />
+               </svg>
+            </button>
+            <div class="faq-panel-wrap">
+               <div class="faq-panel-inner">
+                  <div class="faq-panel" id="panel-7" role="region" aria-labelledby="btn-7">
+                     ขึ้นอยู่กับบริการ โดยทั่วไปต้องการแค่ลิงก์โปรไฟล์หรือลิงก์โพสต์ที่ต้องการเพิ่มยอด
+                     สำหรับบางบริการอาจต้องการข้อมูลเพิ่มเติมเล็กน้อย แต่ไม่ต้องกังวล ทีมงานจะแนะนำคุณทุกขั้นตอน
+                  </div>
+               </div>
+            </div>
+         </article>
+
+         <article class="faq-item" data-faq>
+            <button class="faq-header" aria-expanded="false" aria-controls="panel-8" id="btn-8">
+               ติดต่อได้ที่ไหน?
+               <svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                     stroke-linejoin="round" />
+               </svg>
+            </button>
+            <div class="faq-panel-wrap">
+               <div class="faq-panel-inner">
+                  <div class="faq-panel" id="panel-8" role="region" aria-labelledby="btn-8">
+                     ติดต่อได้ผ่าน <a href="https://line.me/ti/p/@gainlike-service">LINE: @gainlike-service (มี@)</a>
+                     หรือ <a href="https://www.facebook.com/profile.php?id=61557690340003">Facebook Page: Gain-Like
+                        Service</a>ทีมงานพร้อมตอบทุกคำถามและให้คำปรึกษาตลอด 24 ชั่วโมง
+                  </div>
+               </div>
+            </div>
+         </article>
+      </section>
+   </main>
+
+   <!-- FAQ section ends -->
+
+   <!-- footer section starts  -->
+   <footer class="footer">
+
+      <section>
+
+         <div class="flex">
+
+            <a href="https://line.me/ti/p/@gainlike-service" class="logo"><img
+                  src="images/gain-like-service-final-09.png" width="15%" alt="Logo">
+
+               <a href="https://line.me/ti/p/@gainlike-service" class="extra-link">ติดต่อเพื่อสั่งซื้อบริการ</a>
+
+         </div>
+
+         <div class="credit">
+
+            <p>&copy; 2025 Gain-Like Service. All rights reserved. <span>บริการโดยทีมงานไทย
+                  มืออาชีพด้านการตลาดออนไลน์</span></p>
+
+            <div class="share">
+               <a href="https://line.me/ti/p/@gainlike-service" class="fab fa-line"></a>
+               <a href="https://www.facebook.com/profile.php?id=61557690340003" class="fab fa-facebook"></a>
+            </div>
+
+         </div>
+
+      </section>
+
+   </footer>
+
+   <!-- footer section ends -->
 
 
 
@@ -752,84 +981,85 @@ function showSlides() {
 
 
 
-<!-- custom js file link     -->
-<!-- <script src="js/script.js"></script> -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const slides = document.querySelectorAll('.reviews .slide'); // ปรับ selector ให้ตรงโครงสร้างจริง
-  let index = 0;
+   <!-- custom js file link     -->
+   <!-- <script src="js/script.js"></script> -->
+   <script>
+      document.addEventListener('DOMContentLoaded', () => {
+         const slides = document.querySelectorAll('.reviews .slide'); // ปรับ selector ให้ตรงโครงสร้างจริง
+         let index = 0;
 
-  // ให้สไลด์แรก active ตั้งต้น (ถ้ายังไม่ได้ใส่ใน HTML)
-  if (slides.length) slides[0].classList.add('active');
+         // ให้สไลด์แรก active ตั้งต้น (ถ้ายังไม่ได้ใส่ใน HTML)
+         if (slides.length) slides[0].classList.add('active');
 
-  const show = (i) => {
-    slides.forEach(s => s.classList.remove('active'));
-    slides[i].classList.add('active');
-  };
+         const show = (i) => {
+            slides.forEach(s => s.classList.remove('active'));
+            slides[i].classList.add('active');
+         };
 
-  // ทำให้เรียกได้จาก onclick ใน HTML
-  window.next = () => {
-    index = (index + 1) % slides.length;
-    show(index);
-  };
-  window.prev = () => {
-    index = (index - 1 + slides.length) % slides.length;
-    show(index);
-  };
+         // ทำให้เรียกได้จาก onclick ใน HTML
+         window.next = () => {
+            index = (index + 1) % slides.length;
+            show(index);
+         };
+         window.prev = () => {
+            index = (index - 1 + slides.length) % slides.length;
+            show(index);
+         };
 
-  console.log('slides:', slides.length); // ควร > 0
-});
-
-// FAQ logic: คลิกเพื่อเปิด/ปิด ปิดข้ออื่นอัตโนมัติ (accordion แบบเปิดทีละข้อ)
-  (function(){
-    const items = document.querySelectorAll('[data-faq]');
-    let openItem = null;
-
-    items.forEach((item, idx) => {
-      const btn = item.querySelector('.faq-header');
-      const panelWrap = item.querySelector('.faq-panel-wrap');
-
-      // เริ่มต้นปิดทุกข้อ
-      item.removeAttribute('open');
-      btn.setAttribute('aria-expanded', 'false');
-
-      btn.addEventListener('click', () => toggle(item, btn));
-      // รองรับ Enter/Space บนปุ่ม (button รองรับอยู่แล้ว แต่กันกรณีพฤติกรรมซ้อน)
-      btn.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          toggle(item, btn);
-        }
+         console.log('slides:', slides.length); // ควร > 0
       });
 
-      function toggle(target, trigger){
-        const isOpen = target.hasAttribute('open');
-        // ปิดของเดิมถ้ามี
-        if (openItem && openItem !== target){
-          openItem.removeAttribute('open');
-          openItem.querySelector('.faq-header').setAttribute('aria-expanded','false');
-        }
-        // toggle ปัจจุบัน
-        if (!isOpen){
-          target.setAttribute('open','');
-          trigger.setAttribute('aria-expanded','true');
-          openItem = target;
-        }else{
-          target.removeAttribute('open');
-          trigger.setAttribute('aria-expanded','false');
-          openItem = null;
-        }
-      }
-    });
+      // FAQ logic: คลิกเพื่อเปิด/ปิด ปิดข้ออื่นอัตโนมัติ (accordion แบบเปิดทีละข้อ)
+      (function () {
+         const items = document.querySelectorAll('[data-faq]');
+         let openItem = null;
 
-    // เปิดข้อแรกเป็นตัวอย่าง (ถ้าอยากเริ่มปิดหมด ให้คอมเมนต์สองบรรทัดล่าง)
-    if (items[0]){
-      items[0].setAttribute('open','');
-      items[0].querySelector('.faq-header').setAttribute('aria-expanded','true');
-    }
-  })();
+         items.forEach((item, idx) => {
+            const btn = item.querySelector('.faq-header');
+            const panelWrap = item.querySelector('.faq-panel-wrap');
 
-</script>
- 
+            // เริ่มต้นปิดทุกข้อ
+            item.removeAttribute('open');
+            btn.setAttribute('aria-expanded', 'false');
+
+            btn.addEventListener('click', () => toggle(item, btn));
+            // รองรับ Enter/Space บนปุ่ม (button รองรับอยู่แล้ว แต่กันกรณีพฤติกรรมซ้อน)
+            btn.addEventListener('keydown', (e) => {
+               if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  toggle(item, btn);
+               }
+            });
+
+            function toggle(target, trigger) {
+               const isOpen = target.hasAttribute('open');
+               // ปิดของเดิมถ้ามี
+               if (openItem && openItem !== target) {
+                  openItem.removeAttribute('open');
+                  openItem.querySelector('.faq-header').setAttribute('aria-expanded', 'false');
+               }
+               // toggle ปัจจุบัน
+               if (!isOpen) {
+                  target.setAttribute('open', '');
+                  trigger.setAttribute('aria-expanded', 'true');
+                  openItem = target;
+               } else {
+                  target.removeAttribute('open');
+                  trigger.setAttribute('aria-expanded', 'false');
+                  openItem = null;
+               }
+            }
+         });
+
+         // เปิดข้อแรกเป็นตัวอย่าง (ถ้าอยากเริ่มปิดหมด ให้คอมเมนต์สองบรรทัดล่าง)
+         if (items[0]) {
+            items[0].setAttribute('open', '');
+            items[0].querySelector('.faq-header').setAttribute('aria-expanded', 'true');
+         }
+      })();
+
+   </script>
+
 </body>
+
 </html>
