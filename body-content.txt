@@ -1,205 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="icon" type="image/png" href="images/favicon.png">
-   <title>เพิ่มผู้ติดตามทุกแพลตฟอร์ม | ปั้มยอดฟอล ปั้มยอดไลค์ ปั้มวิว ครบจบในที่เดียว | Gain-Like Service</title>
-   <meta name="description"
-      content="บริการเพิ่มผู้ติดตาม TikTok, Facebook, IG, YouTube, Shopee, Line-OA และอื่นๆ รวมถึงปั้มยอดไลค์ ปั้มวิว และเพิ่มคอมเมนต์ ด้วยระบบปลอดภัย เห็นผลจริง มีประกันยอดทุกแพ็กเกจ">
-
-   <!-- SEO Meta Tags -->
-   <link rel="canonical" href="https://socialupnow.com/">
-   <meta property="og:url" content="https://socialupnow.com/">
-   <meta property="og:type" content="website">
-   <meta property="og:title"
-      content="เพิ่มผู้ติดตามทุกแพลตฟอร์ม | ปั้มยอดฟอล ปั้มยอดไลค์ ปั้มวิว ครบจบในที่เดียว | Gain-Like Service">
-   <meta property="og:description"
-      content="บริการเพิ่มผู้ติดตาม TikTok, Facebook, IG, YouTube, Shopee, Line-OA และอื่นๆ รวมถึงปั้มยอดไลค์ ปั้มวิว และเพิ่มคอมเมนต์ ด้วยระบบปลอดภัย เห็นผลจริง มีประกันยอดทุกแพ็กเกจ">
-
-   <link rel="stylesheet" href="css/style.css">
-
-   <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
-
-   <!-- Fix for slideshow without JavaScript -->
-   <style>
-   .mySlides { display: block !important; }
-   .slideshow-container { max-width: 1000px; margin: auto; }
-   .dot { display: none; }
-   </style>
-
-   <!-- Google Tag Manager - DISABLED for Google Ads compliance -->
-   <!-- Will be re-enabled after ads approval -->
-   <!-- End Google Tag Manager -->
-
-   <!-- Meta Pixel Code - DISABLED for Google Ads compliance -->
-   <!-- Will be re-enabled after ads approval -->
-
-
-
-      // Enhanced tracking for GitHub Pages
-      // Get user data for better iOS tracking
-      function getUserData() {
-         return {
-            fbc: new URLSearchParams(window.location.search).get('fbclid') ?
-               'fb.1.' + Date.now() + '.' + new URLSearchParams(window.location.search).get('fbclid') : null,
-            fbp: getCookie('_fbp'),
-            external_id: generateExternalId(),
-            client_ip_address: null, // Will be set by Facebook
-            client_user_agent: navigator.userAgent
-         };
-      }
-
-      // Get Facebook browser cookie
-      function getCookie(name) {
-         const value = `; ${document.cookie}`;
-         const parts = value.split(`; ${name}=`);
-         if (parts.length === 2) return parts.pop().split(';').shift();
-         return null;
-      }
-
-      // Generate external ID for better matching
-      function generateExternalId() {
-         let externalId = localStorage.getItem('gl_external_id');
-         if (!externalId) {
-            externalId = 'gl_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-            localStorage.setItem('gl_external_id', externalId);
-         }
-         return externalId;
-      }
-
-      // Enhanced event tracking
-      function trackEnhancedEvent(eventName, customData = {}) {
-         const userData = getUserData();
-
-         // Standard pixel tracking
-         fbq('track', eventName, customData);
-
-         // Enhanced tracking with user data
-         fbq('track', eventName, customData, {
-            eventID: 'evt_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9)
-         });
-      }
-
-      // Track scroll depth for engagement
-      let maxScroll = 0;
-      window.addEventListener('scroll', function () {
-         const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-         if (scrollPercent > maxScroll) {
-            maxScroll = scrollPercent;
-            if (scrollPercent >= 25 && scrollPercent < 50) {
-               trackEnhancedEvent('ViewContent', { content_name: '25% Page Scroll' });
-            } else if (scrollPercent >= 50 && scrollPercent < 75) {
-               trackEnhancedEvent('ViewContent', { content_name: '50% Page Scroll' });
-            } else if (scrollPercent >= 75) {
-               trackEnhancedEvent('ViewContent', { content_name: '75% Page Scroll' });
-            }
-         }
-      });
-
-      document.addEventListener('DOMContentLoaded', function () {
-         // Track page engagement time
-         let startTime = Date.now();
-         let engagementTracked = false;
-
-         setTimeout(() => {
-            if (!engagementTracked) {
-               trackEnhancedEvent('ViewContent', {
-                  content_name: '30 Second Engagement',
-                  content_category: 'Engagement',
-                  value: 1
-               });
-               engagementTracked = true;
-            }
-         }, 30000);
-
-         // Track Line button clicks with enhanced data
-         const lineButtons = document.querySelectorAll('a[href*="line.me"]');
-         lineButtons.forEach(button => {
-            button.addEventListener('click', function () {
-               const buttonText = this.textContent.trim();
-               trackEnhancedEvent('Lead', {
-                  content_name: 'Line Contact: ' + buttonText,
-                  content_category: 'Contact',
-                  source: 'website',
-                  value: 50 // Estimated lead value in THB
-               });
-
-               // Track in Google Analytics if available
-               if (typeof gtag !== 'undefined') {
-                  gtag('event', 'generate_lead', {
-                     currency: 'THB',
-                     value: 50,
-                     lead_source: 'line_button'
-                  });
-               }
-            });
-         });
-
-         // Track service button clicks with enhanced data
-         const serviceButtons = document.querySelectorAll('.btn, .btn-2');
-         serviceButtons.forEach(button => {
-            button.addEventListener('click', function (e) {
-               if (!this.href.includes('line.me')) { // Avoid double tracking Line buttons
-                  const buttonText = this.textContent.trim();
-                  const serviceValue = getServiceValue(buttonText);
-
-                  trackEnhancedEvent('InitiateCheckout', {
-                     content_name: buttonText,
-                     content_category: 'Service Interest',
-                     source: 'website',
-                     value: serviceValue,
-                     currency: 'THB'
-                  });
-               }
-            });
-         });
-
-         // Track promotion clicks
-         const promoLinks = document.querySelectorAll('.mySlides a');
-         promoLinks.forEach(link => {
-            link.addEventListener('click', function () {
-               trackEnhancedEvent('ViewContent', {
-                  content_name: 'Promotion Click',
-                  content_category: 'Promotion',
-                  source: 'slideshow'
-               });
-            });
-         });
-
-         // Track FAQ interactions
-         const faqButtons = document.querySelectorAll('.faq-header');
-         faqButtons.forEach(button => {
-            button.addEventListener('click', function () {
-               trackEnhancedEvent('ViewContent', {
-                  content_name: 'FAQ Interaction',
-                  content_category: 'Support',
-                  source: 'faq_section'
-               });
-            });
-         });
-      });
-
-      // Estimate service value based on button text
-      function getServiceValue(buttonText) {
-         if (buttonText.includes('TikTok') || buttonText.includes('ติ๊กต็อก')) return 100;
-         if (buttonText.includes('Facebook') || buttonText.includes('เฟส')) return 80;
-         if (buttonText.includes('Instagram') || buttonText.includes('ไอจี')) return 90;
-         if (buttonText.includes('YouTube') || buttonText.includes('ยูทูป')) return 150;
-         if (buttonText.includes('Shopee') || buttonText.includes('ช้อปปี้')) return 70;
-         if (buttonText.includes('Line-OA') || buttonText.includes('ไลน์')) return 120;
-         return 50; // Default value
-      }
-   </script>
-   <noscript><img height="1" width="1" style="display:none"
-         src="https://www.facebook.com/tr?id=1328920058890319&ev=PageView&noscript=1" /></noscript>
-   <!-- End Meta Pixel Code -->
-
-</head>
-
-<body>
-
+   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5HSWGWFH" height="0" width="0"
+         style="display:none;visibility:hidden"></iframe></noscript>
+   <!-- End Google Tag Manager (noscript) -->
 
    <!-- header section starts  -->
 
@@ -293,6 +94,27 @@
       <span class="dot" onclick="currentSlide(4)"></span>
    </div>
 
+   <script>
+      let slideIndex = 0;
+      showSlides();
+
+      function showSlides() {
+         let i;
+         let slides = document.getElementsByClassName("mySlides");
+         let dots = document.getElementsByClassName("dot");
+         for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+         }
+         slideIndex++;
+         if (slideIndex > slides.length) { slideIndex = 1 }
+         for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+         }
+         slides[slideIndex - 1].style.display = "block";
+         dots[slideIndex - 1].className += " active";
+         setTimeout(showSlides, 3000);
+      }
+   </script>
 
    <!-- Promotion section ends -->
 
@@ -944,6 +766,83 @@
 
 
    <!-- custom js file link     -->
+   <!-- <script src="js/script.js"></script> -->
+   <script>
+      document.addEventListener('DOMContentLoaded', () => {
+         const slides = document.querySelectorAll('.reviews .slide'); // ปรับ selector ให้ตรงโครงสร้างจริง
+         let index = 0;
+
+         // ให้สไลด์แรก active ตั้งต้น (ถ้ายังไม่ได้ใส่ใน HTML)
+         if (slides.length) slides[0].classList.add('active');
+
+         const show = (i) => {
+            slides.forEach(s => s.classList.remove('active'));
+            slides[i].classList.add('active');
+         };
+
+         // ทำให้เรียกได้จาก onclick ใน HTML
+         window.next = () => {
+            index = (index + 1) % slides.length;
+            show(index);
+         };
+         window.prev = () => {
+            index = (index - 1 + slides.length) % slides.length;
+            show(index);
+         };
+
+         console.log('slides:', slides.length); // ควร > 0
+      });
+
+      // FAQ logic: คลิกเพื่อเปิด/ปิด ปิดข้ออื่นอัตโนมัติ (accordion แบบเปิดทีละข้อ)
+      (function () {
+         const items = document.querySelectorAll('[data-faq]');
+         let openItem = null;
+
+         items.forEach((item, idx) => {
+            const btn = item.querySelector('.faq-header');
+            const panelWrap = item.querySelector('.faq-panel-wrap');
+
+            // เริ่มต้นปิดทุกข้อ
+            item.removeAttribute('open');
+            btn.setAttribute('aria-expanded', 'false');
+
+            btn.addEventListener('click', () => toggle(item, btn));
+            // รองรับ Enter/Space บนปุ่ม (button รองรับอยู่แล้ว แต่กันกรณีพฤติกรรมซ้อน)
+            btn.addEventListener('keydown', (e) => {
+               if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  toggle(item, btn);
+               }
+            });
+
+            function toggle(target, trigger) {
+               const isOpen = target.hasAttribute('open');
+               // ปิดของเดิมถ้ามี
+               if (openItem && openItem !== target) {
+                  openItem.removeAttribute('open');
+                  openItem.querySelector('.faq-header').setAttribute('aria-expanded', 'false');
+               }
+               // toggle ปัจจุบัน
+               if (!isOpen) {
+                  target.setAttribute('open', '');
+                  trigger.setAttribute('aria-expanded', 'true');
+                  openItem = target;
+               } else {
+                  target.removeAttribute('open');
+                  trigger.setAttribute('aria-expanded', 'false');
+                  openItem = null;
+               }
+            }
+         });
+
+         // เปิดข้อแรกเป็นตัวอย่าง (ถ้าอยากเริ่มปิดหมด ให้คอมเมนต์สองบรรทัดล่าง)
+         if (items[0]) {
+            items[0].setAttribute('open', '');
+            items[0].querySelector('.faq-header').setAttribute('aria-expanded', 'true');
+         }
+      })();
+
+   </script>
 
 </body>
 

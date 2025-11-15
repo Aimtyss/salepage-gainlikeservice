@@ -19,24 +19,52 @@
       content="บริการเพิ่มผู้ติดตาม TikTok, Facebook, IG, YouTube, Shopee, Line-OA และอื่นๆ รวมถึงปั้มยอดไลค์ ปั้มวิว และเพิ่มคอมเมนต์ ด้วยระบบปลอดภัย เห็นผลจริง มีประกันยอดทุกแพ็กเกจ">
 
    <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="styles-slider.css">
 
    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
 
-   <!-- Fix for slideshow without JavaScript -->
-   <style>
-   .mySlides { display: block !important; }
-   .slideshow-container { max-width: 1000px; margin: auto; }
-   .dot { display: none; }
-   </style>
 
-   <!-- Google Tag Manager - DISABLED for Google Ads compliance -->
-   <!-- Will be re-enabled after ads approval -->
+
+   <!-- Google Tag Manager - Load after critical content -->
+   <script>
+      // Defer GTM loading to improve initial page load
+      window.addEventListener('load', function () {
+         (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+               'gtm.start': new Date().getTime(), event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+               j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+         })(window, document, 'script', 'dataLayer', 'GTM-5HSWGWFH');
+      });
+   </script>
    <!-- End Google Tag Manager -->
 
-   <!-- Meta Pixel Code - DISABLED for Google Ads compliance -->
-   <!-- Will be re-enabled after ads approval -->
+   <!-- Meta Pixel Code -->
+   <script>
+      !function (f, b, e, v, n, t, s) {
+         if (f.fbq) return; n = f.fbq = function () {
+            n.callMethod ?
+               n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+         };
+         if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+         n.queue = []; t = b.createElement(e); t.async = !0;
+         t.src = v; s = b.getElementsByTagName(e)[0];
+         s.parentNode.insertBefore(t, s)
+      }(window, document, 'script',
+         'https://connect.facebook.net/en_US/fbevents.js');
 
+      // Initialize Facebook Pixel
+      fbq('init', '1328920058890319');
 
+      // Enhanced configuration for better iOS tracking
+      fbq('set', 'agent', 'tmgoogletagmanager', '1328920058890319');
+
+      // Track PageView
+      fbq('track', 'PageView');
 
       // Enhanced tracking for GitHub Pages
       // Get user data for better iOS tracking
@@ -200,6 +228,10 @@
 
 <body>
 
+   <!-- Google Tag Manager (noscript) -->
+   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5HSWGWFH" height="0" width="0"
+         style="display:none;visibility:hidden"></iframe></noscript>
+   <!-- End Google Tag Manager (noscript) -->
 
    <!-- header section starts  -->
 
@@ -293,6 +325,27 @@
       <span class="dot" onclick="currentSlide(4)"></span>
    </div>
 
+   <script>
+      let slideIndex = 0;
+      showSlides();
+
+      function showSlides() {
+         let i;
+         let slides = document.getElementsByClassName("mySlides");
+         let dots = document.getElementsByClassName("dot");
+         for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+         }
+         slideIndex++;
+         if (slideIndex > slides.length) { slideIndex = 1 }
+         for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+         }
+         slides[slideIndex - 1].style.display = "block";
+         dots[slideIndex - 1].className += " active";
+         setTimeout(showSlides, 3000);
+      }
+   </script>
 
    <!-- Promotion section ends -->
 
@@ -944,6 +997,83 @@
 
 
    <!-- custom js file link     -->
+   <!-- <script src="js/script.js"></script> -->
+   <script>
+      document.addEventListener('DOMContentLoaded', () => {
+         const slides = document.querySelectorAll('.reviews .slide'); // ปรับ selector ให้ตรงโครงสร้างจริง
+         let index = 0;
+
+         // ให้สไลด์แรก active ตั้งต้น (ถ้ายังไม่ได้ใส่ใน HTML)
+         if (slides.length) slides[0].classList.add('active');
+
+         const show = (i) => {
+            slides.forEach(s => s.classList.remove('active'));
+            slides[i].classList.add('active');
+         };
+
+         // ทำให้เรียกได้จาก onclick ใน HTML
+         window.next = () => {
+            index = (index + 1) % slides.length;
+            show(index);
+         };
+         window.prev = () => {
+            index = (index - 1 + slides.length) % slides.length;
+            show(index);
+         };
+
+         console.log('slides:', slides.length); // ควร > 0
+      });
+
+      // FAQ logic: คลิกเพื่อเปิด/ปิด ปิดข้ออื่นอัตโนมัติ (accordion แบบเปิดทีละข้อ)
+      (function () {
+         const items = document.querySelectorAll('[data-faq]');
+         let openItem = null;
+
+         items.forEach((item, idx) => {
+            const btn = item.querySelector('.faq-header');
+            const panelWrap = item.querySelector('.faq-panel-wrap');
+
+            // เริ่มต้นปิดทุกข้อ
+            item.removeAttribute('open');
+            btn.setAttribute('aria-expanded', 'false');
+
+            btn.addEventListener('click', () => toggle(item, btn));
+            // รองรับ Enter/Space บนปุ่ม (button รองรับอยู่แล้ว แต่กันกรณีพฤติกรรมซ้อน)
+            btn.addEventListener('keydown', (e) => {
+               if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  toggle(item, btn);
+               }
+            });
+
+            function toggle(target, trigger) {
+               const isOpen = target.hasAttribute('open');
+               // ปิดของเดิมถ้ามี
+               if (openItem && openItem !== target) {
+                  openItem.removeAttribute('open');
+                  openItem.querySelector('.faq-header').setAttribute('aria-expanded', 'false');
+               }
+               // toggle ปัจจุบัน
+               if (!isOpen) {
+                  target.setAttribute('open', '');
+                  trigger.setAttribute('aria-expanded', 'true');
+                  openItem = target;
+               } else {
+                  target.removeAttribute('open');
+                  trigger.setAttribute('aria-expanded', 'false');
+                  openItem = null;
+               }
+            }
+         });
+
+         // เปิดข้อแรกเป็นตัวอย่าง (ถ้าอยากเริ่มปิดหมด ให้คอมเมนต์สองบรรทัดล่าง)
+         if (items[0]) {
+            items[0].setAttribute('open', '');
+            items[0].querySelector('.faq-header').setAttribute('aria-expanded', 'true');
+         }
+      })();
+
+   </script>
 
 </body>
 
