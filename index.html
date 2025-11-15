@@ -32,165 +32,171 @@
          }); var f = d.getElementsByTagName(s)[0],
             j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-5HSWGWFH');</script>
-   <!-- End Google Tag Manager -->
+      })(window, document, 'script', 'dataLayer', 'GTM-5HSWGWFH');
+      // <!-- End Google Tag Manager -->
 
-   <!-- Meta Pixel Code - DISABLED for Google Ads compliance -->
-   <!-- Will be re-enabled after ads approval -->
+      // <!-- Meta Pixel Code - DISABLED for Google Ads compliance -->
+      // <!-- Will be re-enabled after ads approval -->
 
 
 
-   <!-- // Enhanced tracking for GitHub Pages
-   // Get user data for better iOS tracking
-   function getUserData() {
-   return {
-   fbc: new URLSearchParams(window.location.search).get('fbclid') ?
-   'fb.1.' + Date.now() + '.' + new URLSearchParams(window.location.search).get('fbclid') : null,
-   fbp: getCookie('_fbp'),
-   external_id: generateExternalId(),
-   client_ip_address: null, // Will be set by Facebook
-   client_user_agent: navigator.userAgent
-   };
-   }
+      // Enhanced tracking for GitHub Pages
+      // Get user data for better iOS tracking
+      function getUserData() {
+         return {
+            fbc: new URLSearchParams(window.location.search).get('fbclid') ?
+               'fb.1.' + Date.now() + '.' + new URLSearchParams(window.location.search).get('fbclid') : null,
+            fbp: getCookie('_fbp'),
+            external_id: generateExternalId(),
+            client_ip_address: null, // Will be set by Facebook
+            client_user_agent: navigator.userAgent
+         };
+      }
 
-   // Get Facebook browser cookie
-   function getCookie(name) {
-   const value = `; ${document.cookie}`;
-   const parts = value.split(`; ${name}=`);
-   if (parts.length === 2) return parts.pop().split(';').shift();
-   return null;
-   }
+      // Get Facebook browser cookie
+      function getCookie(name) {
+         const value = `; ${document.cookie}`;
+         const parts = value.split(`; ${name}=`);
+         if (parts.length === 2) return parts.pop().split(';').shift();
+         return null;
+      }
 
-   // Generate external ID for better matching
-   function generateExternalId() {
-   let externalId = localStorage.getItem('gl_external_id');
-   if (!externalId) {
-   externalId = 'gl_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-   localStorage.setItem('gl_external_id', externalId);
-   }
-   return externalId;
-   }
-
-   // Enhanced event tracking
-   function trackEnhancedEvent(eventName, customData = {}) {
-   const userData = getUserData();
-
-   // Standard pixel tracking
-   fbq('track', eventName, customData);
-
-   // Enhanced tracking with user data
-   fbq('track', eventName, customData, {
-   eventID: 'evt_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9)
-   });
-   }
-
-   // Track scroll depth for engagement
-   let maxScroll = 0;
-   window.addEventListener('scroll', function () {
-   const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-   if (scrollPercent > maxScroll) {
-   maxScroll = scrollPercent;
-   if (scrollPercent >= 25 && scrollPercent < 50) { trackEnhancedEvent('ViewContent', { content_name: '25% Page Scroll'
-      }); } else if (scrollPercent>= 50 && scrollPercent < 75) { trackEnhancedEvent('ViewContent', {
-         content_name: '50% Page Scroll' }); } else if (scrollPercent>= 75) {
-         trackEnhancedEvent('ViewContent', { content_name: '75% Page Scroll' });
+      // Generate external ID for better matching
+      function generateExternalId() {
+         let externalId = localStorage.getItem('gl_external_id');
+         if (!externalId) {
+            externalId = 'gl_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            localStorage.setItem('gl_external_id', externalId);
          }
-         }
+         return externalId;
+      }
+
+      // Enhanced event tracking
+      function trackEnhancedEvent(eventName, customData = {}) {
+         const userData = getUserData();
+
+         // Standard pixel tracking
+         fbq('track', eventName, customData);
+
+         // Enhanced tracking with user data
+         fbq('track', eventName, customData, {
+            eventID: 'evt_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9)
          });
+      }
 
-         document.addEventListener('DOMContentLoaded', function () {
+      // Track scroll depth for engagement
+      let maxScroll = 0;
+      window.addEventListener('scroll', function () {
+         const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+         if (scrollPercent > maxScroll) {
+            maxScroll = scrollPercent;
+            if (scrollPercent >= 25 && scrollPercent < 50) {
+               trackEnhancedEvent('ViewContent', {
+                  content_name: '25% Page Scroll'
+               });
+            } else if (scrollPercent >= 50 && scrollPercent < 75) {
+               trackEnhancedEvent('ViewContent', {
+                  content_name: '50% Page Scroll'
+               });
+            } else if (scrollPercent >= 75) {
+               trackEnhancedEvent('ViewContent', { content_name: '75% Page Scroll' });
+            }
+         }
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
          // Track page engagement time
          let startTime = Date.now();
          let engagementTracked = false;
 
          setTimeout(() => {
-         if (!engagementTracked) {
-         trackEnhancedEvent('ViewContent', {
-         content_name: '30 Second Engagement',
-         content_category: 'Engagement',
-         value: 1
-         });
-         engagementTracked = true;
-         }
+            if (!engagementTracked) {
+               trackEnhancedEvent('ViewContent', {
+                  content_name: '30 Second Engagement',
+                  content_category: 'Engagement',
+                  value: 1
+               });
+               engagementTracked = true;
+            }
          }, 30000);
 
          // Track Line button clicks with enhanced data
          const lineButtons = document.querySelectorAll('a[href*="line.me"]');
          lineButtons.forEach(button => {
-         button.addEventListener('click', function () {
-         const buttonText = this.textContent.trim();
-         trackEnhancedEvent('Lead', {
-         content_name: 'Line Contact: ' + buttonText,
-         content_category: 'Contact',
-         source: 'website',
-         value: 50 // Estimated lead value in THB
-         });
+            button.addEventListener('click', function () {
+               const buttonText = this.textContent.trim();
+               trackEnhancedEvent('Lead', {
+                  content_name: 'Line Contact: ' + buttonText,
+                  content_category: 'Contact',
+                  source: 'website',
+                  value: 50 // Estimated lead value in THB
+               });
 
-         // Track in Google Analytics if available
-         if (typeof gtag !== 'undefined') {
-         gtag('event', 'generate_lead', {
-         currency: 'THB',
-         value: 50,
-         lead_source: 'line_button'
-         });
-         }
-         });
+               // Track in Google Analytics if available
+               if (typeof gtag !== 'undefined') {
+                  gtag('event', 'generate_lead', {
+                     currency: 'THB',
+                     value: 50,
+                     lead_source: 'line_button'
+                  });
+               }
+            });
          });
 
          // Track service button clicks with enhanced data
          const serviceButtons = document.querySelectorAll('.btn, .btn-2');
          serviceButtons.forEach(button => {
-         button.addEventListener('click', function (e) {
-         if (!this.href.includes('line.me')) { // Avoid double tracking Line buttons
-         const buttonText = this.textContent.trim();
-         const serviceValue = getServiceValue(buttonText);
+            button.addEventListener('click', function (e) {
+               if (!this.href.includes('line.me')) { // Avoid double tracking Line buttons
+                  const buttonText = this.textContent.trim();
+                  const serviceValue = getServiceValue(buttonText);
 
-         trackEnhancedEvent('InitiateCheckout', {
-         content_name: buttonText,
-         content_category: 'Service Interest',
-         source: 'website',
-         value: serviceValue,
-         currency: 'THB'
-         });
-         }
-         });
+                  trackEnhancedEvent('InitiateCheckout', {
+                     content_name: buttonText,
+                     content_category: 'Service Interest',
+                     source: 'website',
+                     value: serviceValue,
+                     currency: 'THB'
+                  });
+               }
+            });
          });
 
          // Track promotion clicks
          const promoLinks = document.querySelectorAll('.mySlides a');
          promoLinks.forEach(link => {
-         link.addEventListener('click', function () {
-         trackEnhancedEvent('ViewContent', {
-         content_name: 'Promotion Click',
-         content_category: 'Promotion',
-         source: 'slideshow'
-         });
-         });
+            link.addEventListener('click', function () {
+               trackEnhancedEvent('ViewContent', {
+                  content_name: 'Promotion Click',
+                  content_category: 'Promotion',
+                  source: 'slideshow'
+               });
+            });
          });
 
          // Track FAQ interactions
          const faqButtons = document.querySelectorAll('.faq-header');
          faqButtons.forEach(button => {
-         button.addEventListener('click', function () {
-         trackEnhancedEvent('ViewContent', {
-         content_name: 'FAQ Interaction',
-         content_category: 'Support',
-         source: 'faq_section'
+            button.addEventListener('click', function () {
+               trackEnhancedEvent('ViewContent', {
+                  content_name: 'FAQ Interaction',
+                  content_category: 'Support',
+                  source: 'faq_section'
+               });
+            });
          });
-         });
-         });
-         });
+      });
 
-         // Estimate service value based on button text
-         function getServiceValue(buttonText) {
+      // Estimate service value based on button text
+      function getServiceValue(buttonText) {
          if (buttonText.includes('TikTok') || buttonText.includes('ติ๊กต็อก')) return 100;
          if (buttonText.includes('Facebook') || buttonText.includes('เฟส')) return 80;
          if (buttonText.includes('Instagram') || buttonText.includes('ไอจี')) return 90;
          if (buttonText.includes('YouTube') || buttonText.includes('ยูทูป')) return 150;
          if (buttonText.includes('Shopee') || buttonText.includes('ช้อปปี้')) return 70;
          if (buttonText.includes('Line-OA') || buttonText.includes('ไลน์')) return 120;
-         return 50; // Default value -->
-   <!-- } -->
+         return 50; // Default value
+      }
    </script>
    <noscript><img height="1" width="1" style="display:none"
          src="https://www.facebook.com/tr?id=1328920058890319&ev=PageView&noscript=1" /></noscript>
