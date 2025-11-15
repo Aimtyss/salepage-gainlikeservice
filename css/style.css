@@ -16,10 +16,6 @@
    --border:.1rem solid rgba(0,0,0,.2);
 }
 
-body {
-  font-family: 'Prompt', sans-serif;
-}
-
 *{
    font-family: "Kanit", sans-serif;
    box-sizing: border-box;
