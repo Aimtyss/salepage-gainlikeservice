@@ -18,53 +18,98 @@
    <meta property="og:description"
       content="บริการเพิ่มผู้ติดตาม TikTok, Facebook, IG, YouTube, Shopee, Line-OA และอื่นๆ รวมถึงปั้มยอดไลค์ ปั้มวิว และเพิ่มคอมเมนต์ ด้วยระบบปลอดภัย เห็นผลจริง มีประกันยอดทุกแพ็กเกจ">
 
+   <!-- Performance Optimizations -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://www.googletagmanager.com">
+   <link rel="preconnect" href="https://connect.facebook.net">
+   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
    <link rel="stylesheet" href="css/style.css">
-   <!-- <link rel="stylesheet" href="styles-slider.css"> -->
 
-   <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
+   <!-- Optimized font loading with font-display -->
+   <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;700&display=swap" rel="stylesheet"
+      media="print" onload="this.media='all'">
+   <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
+   </noscript>
 
-
-   <!-- Google Tag Manager -->
-   <script>(function (w, d, s, l, i) {
-         w[l] = w[l] || []; w[l].push({
-            'gtm.start':
-               new Date().getTime(), event: 'gtm.js'
-         }); var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-               'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-5HSWGWFH');</script>
-   <!-- End Google Tag Manager -->
-
-   <!-- Google Tag Manager -->
-   <script>(function (w, d, s, l, i) {
-         w[l] = w[l] || []; w[l].push({
-            'gtm.start':
-               new Date().getTime(), event: 'gtm.js'
-         }); var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-               'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-MTFWJVSS');</script>
-   <!-- End Google Tag Manager -->
-
-   <!-- Meta Pixel Code -->
+   <!-- Optimized Google Tag Manager - Deferred Loading -->
    <script>
-      !function (f, b, e, v, n, t, s) {
-         if (f.fbq) return; n = f.fbq = function () {
-            n.callMethod ?
+      // Initialize dataLayer first for early events
+      window.dataLayer = window.dataLayer || [];
+
+      // Defer GTM loading until page is interactive
+      function loadGTM() {
+         // GTM Container 1
+         (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+               'gtm.start':
+                  new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+               j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                  'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+         })(window, document, 'script', 'dataLayer', 'GTM-5HSWGWFH');
+
+         // GTM Container 2 - with slight delay to avoid conflicts
+         setTimeout(function () {
+            (function (w, d, s, l, i) {
+               w[l] = w[l] || []; w[l].push({
+                  'gtm.start':
+                     new Date().getTime(), event: 'gtm.js'
+               }); var f = d.getElementsByTagName(s)[0],
+                  j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                     'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-MTFWJVSS');
+         }, 100);
+      }
+
+      // Load GTM after critical content is ready
+      if (document.readyState === 'loading') {
+         document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(loadGTM, 500);
+         });
+      } else {
+         setTimeout(loadGTM, 500);
+      }
+   </script>
+   <!-- End Optimized Google Tag Manager -->
+
+   <!-- Optimized Meta Pixel Code - Deferred Loading -->
+   <script>
+      // Initialize fbq queue early but defer script loading
+      window.fbq = window.fbq || function () {
+         (window.fbq.q = window.fbq.q || []).push(arguments)
+      };
+
+      // Defer Facebook Pixel loading
+      function loadFacebookPixel() {
+         !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+               n.callMethod ?
                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-         };
-         if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-         n.queue = []; t = b.createElement(e); t.async = !0;
-         t.src = v; s = b.getElementsByTagName(e)[0];
-         s.parentNode.insertBefore(t, s)
-      }(window, document, 'script',
-         'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '1328920058890319');
-      fbq('track', 'PageView');
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+         }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+
+         fbq('init', '1328920058890319');
+         fbq('track', 'PageView');
+      }
+
+      // Load Facebook Pixel after page is ready
+      if (document.readyState === 'loading') {
+         document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(loadFacebookPixel, 1000);
+         });
+      } else {
+         setTimeout(loadFacebookPixel, 1000);
+      }
    </script>
    <noscript><img height="1" width="1" style="display:none"
          src="https://www.facebook.com/tr?id=1328920058890319&ev=PageView&noscript=1" /></noscript>
-   <!-- End Meta Pixel Code -->
+   <!-- End Optimized Meta Pixel Code -->
 
    <meta name="google-site-verification" content="Fe8KBs73OrOCWWz_NqtoidX4bintazaoOb8_0TRFj9Q" />
 
@@ -173,25 +218,45 @@
       <span class="dot" onclick="currentSlide(4)"></span>
    </div>
 
+   <!-- Optimized header slideshow - deferred loading -->
    <script>
-      let slideIndex = 0;
-      showSlides();
+      // Defer slideshow initialization
+      function initHeaderSlideshow() {
+         const slides = document.getElementsByClassName("mySlides");
+         const dots = document.getElementsByClassName("dot");
+         if (!slides.length) return;
 
-      function showSlides() {
-         let i;
-         let slides = document.getElementsByClassName("mySlides");
-         let dots = document.getElementsByClassName("dot");
-         for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
+         let slideIndex = 0;
+
+         function showSlides() {
+            // Hide all slides efficiently
+            Array.from(slides).forEach(slide => slide.style.display = "none");
+            Array.from(dots).forEach(dot => dot.classList.remove("active"));
+
+            slideIndex = slideIndex >= slides.length ? 0 : slideIndex;
+            slides[slideIndex].style.display = "block";
+            if (dots[slideIndex]) dots[slideIndex].classList.add("active");
+
+            slideIndex++;
+            setTimeout(showSlides, 3000);
          }
-         slideIndex++;
-         if (slideIndex > slides.length) { slideIndex = 1 }
-         for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-         }
-         slides[slideIndex - 1].style.display = "block";
-         dots[slideIndex - 1].className += " active";
-         setTimeout(showSlides, 3000);
+
+         // Global function for dot navigation
+         window.currentSlide = (n) => {
+            slideIndex = n - 1;
+            showSlides();
+         };
+
+         showSlides();
+      }
+
+      // Defer until after critical content
+      if (document.readyState === 'loading') {
+         document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(initHeaderSlideshow, 800);
+         });
+      } else {
+         setTimeout(initHeaderSlideshow, 800);
       }
    </script>
 
@@ -846,81 +911,83 @@
 
    <!-- custom js file link     -->
    <!-- <script src="js/script.js"></script> -->
+   <!-- Optimized lightweight JavaScript - Deferred execution -->
    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-         const slides = document.querySelectorAll('.reviews .slide'); // ปรับ selector ให้ตรงโครงสร้างจริง
-         let index = 0;
+      // Performance-optimized interaction handlers
+      function initializeInteractions() {
+         // Lightweight slideshow (only initialize when needed)
+         const slides = document.querySelectorAll('.reviews .slide');
+         if (slides.length) {
+            let index = 0;
+            slides[0].classList.add('active');
 
-         // ให้สไลด์แรก active ตั้งต้น (ถ้ายังไม่ได้ใส่ใน HTML)
-         if (slides.length) slides[0].classList.add('active');
+            const show = (i) => {
+               slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+            };
 
-         const show = (i) => {
-            slides.forEach(s => s.classList.remove('active'));
-            slides[i].classList.add('active');
-         };
+            // Global functions for onclick handlers
+            window.next = () => show(index = (index + 1) % slides.length);
+            window.prev = () => show(index = (index - 1 + slides.length) % slides.length);
+         }
 
-         // ทำให้เรียกได้จาก onclick ใน HTML
-         window.next = () => {
-            index = (index + 1) % slides.length;
-            show(index);
-         };
-         window.prev = () => {
-            index = (index - 1 + slides.length) % slides.length;
-            show(index);
-         };
-
-         console.log('slides:', slides.length); // ควร > 0
-      });
-
-      // FAQ logic: คลิกเพื่อเปิด/ปิด ปิดข้ออื่นอัตโนมัติ (accordion แบบเปิดทีละข้อ)
-      (function () {
-         const items = document.querySelectorAll('[data-faq]');
+         // Lightweight FAQ accordion 
+         const faqItems = document.querySelectorAll('[data-faq]');
          let openItem = null;
 
-         items.forEach((item, idx) => {
+         faqItems.forEach(item => {
             const btn = item.querySelector('.faq-header');
-            const panelWrap = item.querySelector('.faq-panel-wrap');
+            if (!btn) return;
 
-            // เริ่มต้นปิดทุกข้อ
             item.removeAttribute('open');
             btn.setAttribute('aria-expanded', 'false');
 
-            btn.addEventListener('click', () => toggle(item, btn));
-            // รองรับ Enter/Space บนปุ่ม (button รองรับอยู่แล้ว แต่กันกรณีพฤติกรรมซ้อน)
-            btn.addEventListener('keydown', (e) => {
-               if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  toggle(item, btn);
-               }
-            });
+            btn.onclick = () => {
+               const isOpen = item.hasAttribute('open');
 
-            function toggle(target, trigger) {
-               const isOpen = target.hasAttribute('open');
-               // ปิดของเดิมถ้ามี
-               if (openItem && openItem !== target) {
+               // Close previously opened item
+               if (openItem && openItem !== item) {
                   openItem.removeAttribute('open');
                   openItem.querySelector('.faq-header').setAttribute('aria-expanded', 'false');
                }
-               // toggle ปัจจุบัน
-               if (!isOpen) {
-                  target.setAttribute('open', '');
-                  trigger.setAttribute('aria-expanded', 'true');
-                  openItem = target;
-               } else {
-                  target.removeAttribute('open');
-                  trigger.setAttribute('aria-expanded', 'false');
+
+               // Toggle current item
+               if (isOpen) {
+                  item.removeAttribute('open');
+                  btn.setAttribute('aria-expanded', 'false');
                   openItem = null;
+               } else {
+                  item.setAttribute('open', '');
+                  btn.setAttribute('aria-expanded', 'true');
+                  openItem = item;
                }
-            }
+            };
          });
 
-         // เปิดข้อแรกเป็นตัวอย่าง (ถ้าอยากเริ่มปิดหมด ให้คอมเมนต์สองบรรทัดล่าง)
-         if (items[0]) {
-            items[0].setAttribute('open', '');
-            items[0].querySelector('.faq-header').setAttribute('aria-expanded', 'true');
+         // Open first FAQ item
+         if (faqItems[0]) {
+            const firstBtn = faqItems[0].querySelector('.faq-header');
+            if (firstBtn) {
+               faqItems[0].setAttribute('open', '');
+               firstBtn.setAttribute('aria-expanded', 'true');
+               openItem = faqItems[0];
+            }
          }
-      })();
+      }
 
+      // Defer initialization until page is fully loaded and idle
+      function deferredInit() {
+         if ('requestIdleCallback' in window) {
+            requestIdleCallback(initializeInteractions, { timeout: 2000 });
+         } else {
+            setTimeout(initializeInteractions, 100);
+         }
+      }
+
+      if (document.readyState === 'loading') {
+         document.addEventListener('DOMContentLoaded', deferredInit);
+      } else {
+         deferredInit();
+      }
    </script>
 
 </body>
