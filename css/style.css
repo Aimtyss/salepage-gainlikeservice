@@ -9,10 +9,11 @@
   src: url('/fonts/kanit/Kanit-Bold.ttf') format('ttf'),}
 
 :root{
-   --main-color:#1B756B;
+   --main-color:#2181db;
    --black:#334;
    --white:#fff;
-   --light-bg:#D7FCE7;
+   --light-bg2:#a0ddff;
+   --light-bg:#67b2fa;
    --light-color:#666;
    --light-white:rgba(255,255,255,.3);
    --bg-color:#eee;
@@ -177,7 +178,7 @@ section{
 }
 
 .home{
-   background: linear-gradient(180deg, var(--light-bg), var(--white));
+   background: linear-gradient(180deg, var(--light-bg2), var(--white));
    padding-top: 10rem;
 }
 
@@ -453,7 +454,7 @@ section{
 }
 
 .options2{
-   background: linear-gradient(140deg, var(--white), var(--light-bg));
+   background: linear-gradient(125deg, var(--white), var(--light-bg));
 }
 
 .info span{
@@ -1236,6 +1237,76 @@ img {vertical-align: middle;}
 @media only screen and (max-width: 300px) {
   .text {font-size: 11px}
 }
-
-
 /* <!-- Promotion section ends  --> */
+body{
+  padding-top: 90px; /* ปรับเลขให้พอดีกับความสูง header จริง */
+}
+/* ===== Page Card ===== */
+.page{
+  padding: 8px 18px 34px;
+}
+
+.card{
+  max-width: 1180px;
+  margin: 0 auto;
+  background: linear-gradient(127deg, var(--white));
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 26px 30px 30px;
+}
+
+/* Typography */
+.title{
+  margin: 0 0 10px;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.lead{
+  margin: 0 0 22px;
+  color: #374151;
+  font-size: 14.5px;
+  line-height: 1.9;
+}
+
+.subtitle{
+  margin: 0 0 14px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.policy-list{
+  margin: 0 0 26px;
+  padding-left: 18px;
+  color: #374151;
+  font-size: 14.5px;
+  line-height: 1.9;
+}
+
+.policy-list li{
+  margin: 6px 0;
+}
+
+.section-title{
+  margin: 26px 0 8px;
+  font-size: 26px;
+  font-weight: 700;
+  color: #374151;
+}
+
+.desc{
+  margin: 0 0 14px;
+  color: #374151;
+  font-size: 14.5px;
+  line-height: 1.9;
+}
+
+.bullet{
+  margin: 0;
+  padding-left: 18px;
+  color: #374151;
+  font-size: 14.5px;
+  line-height: 2.0;
+}
+.bullet li{ margin: 4px 0; }
